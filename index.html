@@ -3,41 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- ═══ TODO: Update these with your real info ═══ -->
 <title>Your Name — UI/UX Designer & CSE Student</title>
 <meta name="description" content="Portfolio of Your Name — UI/UX Designer and 3rd year CSE student passionate about crafting user-centered digital experiences.">
-
-<!-- Open Graph / Social sharing -->
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://yourname.github.io">
 <meta property="og:title"       content="Your Name — UI/UX Designer & CSE Student">
-<meta property="og:description" content="3rd year CSE student crafting clean, user-centered digital experiences — design meets engineering.">
-<meta property="og:image"       content="og-preview.png"><!-- TODO: add a 1200×630 preview image -->
+<meta property="og:description" content="3rd year CSE student crafting clean, user-centered digital experiences.">
+<meta property="og:image"       content="og-preview.png">
 <meta name="twitter:card"       content="summary_large_image">
-<meta name="twitter:title"      content="Your Name — Portfolio">
-<meta name="twitter:image"      content="og-preview.png">
-
-<!-- Favicon (gradient SVG — no file needed) -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%238B7CF8'/><stop offset='100%25' stop-color='%2334D4B7'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='68' text-anchor='middle' font-size='52' font-weight='700' font-family='sans-serif' fill='white'>YN</text></svg>"><!-- TODO: change YN to your initials -->
-
+<meta name="theme-color"        content="#080B18">
+<!-- TODO: change YN to your initials -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%238B7CF8'/><stop offset='100%25' stop-color='%2334D4B7'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='68' text-anchor='middle' font-size='52' font-weight='700' font-family='sans-serif' fill='white'>YN</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <style>
-/* ═══ TOKENS ══════════════════════════════════ */
+/* ── TOKENS ─────────────────────────────────── */
 :root{
   --bg:#080B18;--surface:#0F1221;--card:#131629;
   --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.14);
   --primary:#8B7CF8;--pdim:rgba(139,124,248,.15);--pglow:rgba(139,124,248,.28);
   --teal:#34D4B7;--tdim:rgba(52,212,183,.12);
   --coral:#F97066;--cdim:rgba(249,112,102,.12);
-  --amber:#F5A623;
   --text:#F0F0FA;--muted:#8B92B2;--faint:#4A5070;
-  --fd:'Space Grotesk',sans-serif;
-  --fb:'Inter',sans-serif;
-  --fm:'JetBrains Mono',monospace;
+  --fd:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace;
   --r:10px;--rl:18px;--nav:68px;
 }
 [data-theme="light"]{
@@ -48,59 +37,29 @@
   --tdim:rgba(52,212,183,.1);--cdim:rgba(249,112,102,.1);
 }
 
-/* ═══ RESET ═══════════════════════════════════ */
+/* ── RESET ───────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:var(--nav)}
-body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.65;overflow-x:hidden;cursor:none;transition:background .35s ease,color .35s ease}
-@media(hover:none){body{cursor:auto}}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.65;overflow-x:hidden;transition:background .35s ease,color .35s ease}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-button{border:none;background:none;font-family:inherit;cursor:none;color:inherit}
+button{border:none;background:none;font-family:inherit;cursor:pointer;color:inherit}
 ul{list-style:none}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--pdim);border-radius:4px}
 *:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:4px}
 
-/* ═══ LOADER ══════════════════════════════════ */
-#loader{
-  position:fixed;inset:0;background:var(--bg);z-index:9999;
-  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;
-  transition:opacity .55s ease,visibility .55s ease;
-}
-#loader.out{opacity:0;visibility:hidden;pointer-events:none}
-.loader-logo{
-  font-family:var(--fd);font-size:3.5rem;font-weight:700;letter-spacing:-.04em;
-  background:linear-gradient(135deg,var(--primary),var(--teal));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:ldpop .6s ease both;
-}
-.loader-bar{width:160px;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
-.loader-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--teal));border-radius:2px;animation:ldfill 1.4s ease forwards}
-@keyframes ldpop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
-@keyframes ldfill{from{width:0}to{width:100%}}
-.loader-txt{font-size:.78rem;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;animation:ldpop .6s ease .2s both}
 
-/* ═══ CUSTOM CURSOR ════════════════════════════ */
-#cur-dot{position:fixed;width:9px;height:9px;border-radius:50%;background:var(--primary);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .1s ease,opacity .2s ease;mix-blend-mode:normal}
-#cur-ring{position:fixed;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(139,124,248,.45);pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:top .14s ease,left .14s ease,width .2s ease,height .2s ease,border-color .2s ease}
-body:has(a:hover) #cur-dot,body:has(button:hover) #cur-dot{transform:translate(-50%,-50%) scale(.5)}
-body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:48px;border-color:rgba(139,124,248,.7)}
-@media(hover:none){#cur-dot,#cur-ring{display:none}}
 
-/* ═══ PROGRESS BAR ═════════════════════════════ */
+/* ── PROGRESS BAR ────────────────────────────── */
 #prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--primary),var(--teal));z-index:1001;pointer-events:none;transition:width .08s linear}
 
-/* ═══ NAV ══════════════════════════════════════ */
-#nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  height:var(--nav);padding:0 max(1.5rem,5vw);
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  transition:background .35s ease,border-bottom .35s ease;
-}
+/* ── NAV ─────────────────────────────────────── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav);padding:0 max(1.5rem,5vw);display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background .35s ease,border-bottom .35s ease}
 #nav.stuck{background:rgba(8,11,24,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
 [data-theme="light"] #nav.stuck{background:rgba(245,245,252,.92)}
-.logo{font-family:var(--fd);font-size:1.3rem;font-weight:700;letter-spacing:-.025em;background:linear-gradient(120deg,var(--primary),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:none}
+.logo{font-family:var(--fd);font-size:1.3rem;font-weight:700;letter-spacing:-.025em;background:linear-gradient(120deg,var(--primary),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;cursor:pointer}
 .nav-links{display:flex;align-items:center;gap:1.75rem}
 .nav-links a{font-size:.88rem;font-weight:500;color:var(--muted);position:relative;padding-bottom:2px;transition:color .2s}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--primary);border-radius:2px;transition:width .25s ease}
@@ -111,7 +70,7 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .btn-theme:hover{background:var(--pdim);border-color:var(--primary);color:var(--primary)}
 .btn-resume{padding:.42rem 1.1rem;border:1px solid var(--border2);border-radius:8px;font-size:.84rem;font-weight:500;color:var(--text);transition:all .25s ease}
 .btn-resume:hover{background:var(--pdim);border-color:var(--primary);color:var(--primary)}
-.burger{display:none;flex-direction:column;gap:5px;cursor:none;padding:6px;z-index:1001}
+.burger{display:none;flex-direction:column;gap:5px;padding:6px;z-index:1001}
 .burger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s ease}
 .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .burger.open span:nth-child(2){opacity:0}
@@ -119,12 +78,36 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 #nav-overlay{display:none;position:fixed;inset:0;background:rgba(8,11,24,.6);z-index:998;backdrop-filter:blur(3px)}
 #nav-overlay.on{display:block}
 
-/* ═══ HERO ══════════════════════════════════════ */
-#home{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav) + 2rem) max(1.5rem,5vw) 4rem;position:relative;overflow:hidden}
+/* ── SIDE NAV DOTS ───────────────────────────── */
+#side-dots{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.7rem;z-index:500}
+.sd{width:8px;height:8px;border-radius:50%;background:var(--faint);border:none;padding:0;transition:all .3s ease;position:relative;cursor:pointer}
+.sd::before{content:attr(data-label);position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);font-size:.72rem;color:var(--muted);white-space:nowrap;opacity:0;transition:opacity .2s ease;pointer-events:none;font-family:var(--fb)}
+.sd:hover::before{opacity:1}
+.sd:hover{background:var(--muted);transform:scale(1.3)}
+.sd.on{background:var(--primary);transform:scale(1.4)}
+.sd.on::before{opacity:1;color:var(--primary)}
+@media(max-width:1100px){#side-dots{display:none}}
+
+/* ── OPEN TO WORK BADGE ──────────────────────── */
+#otw{position:fixed;bottom:1.75rem;left:1.75rem;z-index:500;display:flex;align-items:center;gap:.5rem;padding:.42rem 1rem;background:var(--card);border:1px solid rgba(52,212,183,.35);border-radius:100px;font-size:.78rem;font-weight:500;color:var(--teal);cursor:pointer;transition:all .3s ease;box-shadow:0 4px 20px rgba(0,0,0,.3);opacity:0;transform:translateY(10px)}
+#otw.show{opacity:1;transform:translateY(0)}
+#otw:hover{background:var(--tdim);border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 28px rgba(52,212,183,.2)}
+.otw-dot{width:8px;height:8px;background:var(--teal);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+
+/* ── BACK TO TOP (circular progress) ────────── */
+#top-wrap{position:fixed;bottom:1.75rem;right:1.75rem;width:48px;height:48px;z-index:500;opacity:0;pointer-events:none;transition:opacity .3s ease}
+#top-wrap.show{opacity:1;pointer-events:all}
+#top-svg{position:absolute;inset:0;width:48px;height:48px;transform:rotate(-90deg);pointer-events:none}
+#top-circle{fill:none;stroke:var(--primary);stroke-width:2.5;stroke-dasharray:138;stroke-dashoffset:138;stroke-linecap:round;transition:stroke-dashoffset .1s linear}
+#top-btn{position:absolute;inset:4px;border-radius:50%;background:var(--card);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--muted);transition:all .25s ease}
+#top-btn:hover{background:var(--pdim);border-color:var(--primary);color:var(--primary)}
+
+/* ── HERO ─────────────────────────────────────── */
+#home{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:calc(var(--nav) + 2rem) max(1.5rem,5vw) 4rem;position:relative;overflow:hidden}
 .orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;will-change:transform}
 .o1{width:560px;height:560px;background:radial-gradient(circle,rgba(139,124,248,.22) 0%,transparent 70%);top:-160px;left:-120px;animation:fl1 14s ease-in-out infinite}
 .o2{width:420px;height:420px;background:radial-gradient(circle,rgba(52,212,183,.18) 0%,transparent 70%);bottom:-80px;right:-80px;animation:fl2 17s ease-in-out infinite}
-.o3{width:280px;height:280px;background:radial-gradient(circle,rgba(249,112,102,.12) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:fl3 11s ease-in-out infinite}
+.o3{width:280px;height:280px;background:radial-gradient(circle,rgba(249,112,102,.12) 0%,transparent 70%);top:50%;left:55%;transform:translate(-50%,-50%);animation:fl3 11s ease-in-out infinite}
 [data-theme="light"] .o1{background:radial-gradient(circle,rgba(139,124,248,.14) 0%,transparent 70%)}
 [data-theme="light"] .o2{background:radial-gradient(circle,rgba(52,212,183,.11) 0%,transparent 70%)}
 #home::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:38px 38px;pointer-events:none}
@@ -133,26 +116,25 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 @keyframes fl1{0%,100%{transform:translate(0,0)}33%{transform:translate(50px,-30px)}66%{transform:translate(-20px,50px)}}
 @keyframes fl2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-20px)}}
 @keyframes fl3{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.3)}}
-.hero-inner{position:relative;z-index:1;max-width:800px}
 .hero-badge{display:inline-flex;align-items:center;gap:.55rem;padding:.38rem 1rem;background:rgba(139,124,248,.1);border:1px solid rgba(139,124,248,.3);border-radius:100px;font-size:.79rem;font-weight:500;color:var(--primary);margin-bottom:1.75rem;animation:fup .6s ease both}
 .bdot{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.5)}}
-.hero-title{font-family:var(--fd);font-size:clamp(2.8rem,7.5vw,5.8rem);font-weight:700;line-height:1.04;letter-spacing:-.035em;margin-bottom:1rem;animation:fup .6s ease .1s both}
 .grad{background:linear-gradient(125deg,var(--text) 0%,var(--primary) 55%,var(--teal) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-role{font-family:var(--fd);font-size:clamp(1.1rem,2.8vw,1.5rem);font-weight:500;color:var(--muted);margin-bottom:1.5rem;min-height:2.2em;animation:fup .6s ease .2s both}
+.hero-role{font-family:var(--fd);font-size:clamp(1.1rem,2.8vw,1.5rem);font-weight:500;color:var(--muted);margin-bottom:1.4rem;min-height:2em;animation:fup .6s ease .2s both}
 .typed{color:var(--primary);font-weight:600}
-.cur{display:inline-block;width:2px;height:1.1em;background:var(--primary);margin-left:2px;vertical-align:middle;animation:blink 1s step-end infinite}
+.cur{display:inline-block;width:2px;height:1em;background:var(--primary);margin-left:2px;vertical-align:middle;animation:blink 1s step-end infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.hero-desc{font-size:1.03rem;color:var(--muted);max-width:540px;margin:0 auto 2.5rem;line-height:1.75;animation:fup .6s ease .3s both}
-.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fup .6s ease .4s both}
+.hero-wrap{position:relative;z-index:1;max-width:800px;width:100%;text-align:center;margin:0 auto}
+.hero-title{font-family:var(--fd);font-size:clamp(2.8rem,7.5vw,5.8rem);font-weight:700;line-height:1.04;letter-spacing:-.035em;margin-bottom:1rem;animation:fup .6s ease .1s both}
+.hero-desc{font-size:.98rem;color:var(--muted);max-width:540px;margin:0 auto 2.25rem;line-height:1.75;animation:fup .6s ease .3s both}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fup .6s ease .4s both}
 @keyframes fup{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fin{from{opacity:0}to{opacity:1}}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;animation:fin 1s ease 1.2s both}
+.scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:1;animation:fin 1s ease 1.2s both}
 .scroll-hint span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 .scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--faint),transparent);animation:sa 2.2s ease-in-out infinite}
 @keyframes sa{0%,100%{opacity:.35}50%{opacity:1}}
 
-/* ═══ SHARED ════════════════════════════════════ */
+/* ── SHARED ──────────────────────────────────── */
 .sec{padding:6rem max(1.5rem,5vw)}
 .wrap{max-width:1080px;margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);margin-bottom:.6rem}
@@ -160,18 +142,17 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .sec-title{font-family:var(--fd);font-size:clamp(1.85rem,4vw,2.9rem);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:.65rem}
 .sec-sub{font-size:.97rem;color:var(--muted);max-width:480px;line-height:1.72}
 .sec-hdr{margin-bottom:3.5rem}
-.btn-p{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.82rem 2rem;background:linear-gradient(135deg,var(--primary),#6C5CE7);border-radius:var(--r);font-weight:600;font-size:.93rem;color:#fff;transition:all .3s ease;border:none;cursor:none;font-family:var(--fb)}
+.btn-p{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.82rem 2rem;background:linear-gradient(135deg,var(--primary),#6C5CE7);border-radius:var(--r);font-weight:600;font-size:.93rem;color:#fff;transition:all .3s ease;border:none;font-family:var(--fb)}
 .btn-p:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(139,124,248,.45)}
-.btn-p:active{transform:translateY(-1px) scale(.98)}
-.btn-o{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.82rem 2rem;background:transparent;border:1px solid var(--border2);border-radius:var(--r);font-weight:500;font-size:.93rem;color:var(--text);transition:all .3s ease;cursor:none;font-family:var(--fb)}
+.btn-p:active{transform:scale(.98)}
+.btn-o{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.82rem 2rem;background:transparent;border:1px solid var(--border2);border-radius:var(--r);font-weight:500;font-size:.93rem;color:var(--text);transition:all .3s ease;font-family:var(--fb)}
 .btn-o:hover{background:rgba(255,255,255,.04);border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
-/* stagger delay helpers */
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 .d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
 
-/* ═══ ABOUT ══════════════════════════════════════ */
+/* ── ABOUT ───────────────────────────────────── */
 #about{background:var(--bg)}
 .about-grid{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:start}
 .av-wrap{position:relative}
@@ -183,6 +164,7 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .av-badge{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:100px;font-size:.76rem;font-weight:500;color:var(--muted);white-space:nowrap}
 .av-dot{width:7px;height:7px;background:var(--teal);border-radius:50%;animation:pulse 2s ease-in-out infinite}
 .about-text p{color:var(--muted);font-size:.97rem;line-height:1.8;margin-bottom:1rem}
+/* animated stat counters */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin:1.8rem 0}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem;text-align:center;transition:all .3s ease}
 .stat:hover{border-color:rgba(139,124,248,.35);transform:translateY(-3px)}
@@ -194,10 +176,10 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .gh-stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.75rem}
 .gh-stats img{border-radius:var(--r);width:100%;border:1px solid var(--border)}
 
-/* ═══ PROCESS ════════════════════════════════════ */
+/* ── PROCESS ─────────────────────────────────── */
 #process{background:var(--surface)}
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative}
-.process-grid::before{content:'';position:absolute;top:2rem;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:2px;background:linear-gradient(90deg,var(--primary),var(--teal));border-radius:2px;z-index:0}
+.process-grid::before{content:'';position:absolute;top:2.1rem;left:calc(12.5% + 18px);right:calc(12.5% + 18px);height:2px;background:linear-gradient(90deg,var(--primary),var(--teal));z-index:0}
 .pstep{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.25rem;text-align:center;position:relative;z-index:1;transition:all .3s ease}
 .pstep:hover{transform:translateY(-5px);border-color:rgba(139,124,248,.3);box-shadow:0 12px 40px rgba(0,0,0,.3)}
 .pstep-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--teal));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:.85rem;font-weight:700;color:#fff;margin:0 auto .75rem}
@@ -205,7 +187,7 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .pstep-title{font-family:var(--fd);font-size:.95rem;font-weight:600;margin-bottom:.5rem}
 .pstep-desc{font-size:.8rem;color:var(--muted);line-height:1.6}
 
-/* ═══ SKILLS ══════════════════════════════════════ */
+/* ── SKILLS ──────────────────────────────────── */
 #skills{background:var(--bg)}
 .sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.25rem}
 .sk-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem;transition:all .3s ease}
@@ -213,20 +195,19 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .sk-icon{width:42px;height:42px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1rem}
 .sk-name{font-family:var(--fd);font-size:.93rem;font-weight:600;margin-bottom:.9rem}
 .pills{display:flex;flex-wrap:wrap;gap:.38rem}
-.pill{padding:.28rem .7rem;border-radius:5px;font-size:.74rem;font-weight:500;font-family:var(--fm);background:rgba(255,255,255,.045);color:var(--muted);border:1px solid var(--border);transition:all .22s ease;cursor:none;user-select:none}
+.pill{padding:.28rem .7rem;border-radius:5px;font-size:.74rem;font-weight:500;font-family:var(--fm);background:rgba(255,255,255,.045);color:var(--muted);border:1px solid var(--border);transition:all .22s ease;user-select:none}
 [data-theme="light"] .pill{background:rgba(0,0,0,.04)}
 .pill:hover{background:var(--pdim);color:var(--primary);border-color:rgba(139,124,248,.35)}
 .pill.on{background:var(--pdim);color:var(--primary);border-color:rgba(139,124,248,.4)}
 
-/* ═══ PROJECTS ════════════════════════════════════ */
+/* ── PROJECTS ────────────────────────────────── */
 #projects{background:var(--surface)}
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(315px,1fr));gap:1.35rem}
-.pc{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;transition:all .35s ease;cursor:none;position:relative}
-.pc:hover{border-color:rgba(139,124,248,.32);transform:translateY(-7px);box-shadow:0 22px 65px rgba(0,0,0,.4)}
+.pc{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;transition:border-color .35s ease,box-shadow .35s ease;cursor:pointer;position:relative;transform-style:preserve-3d;will-change:transform}
+.pc:hover{border-color:rgba(139,124,248,.32);box-shadow:0 22px 65px rgba(0,0,0,.4)}
 .pc-thumb{aspect-ratio:16/9;position:relative;overflow:hidden}
 .pc-emo{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;transition:transform .4s ease;position:relative}
 .pc:hover .pc-emo{transform:scale(1.07)}
-/* Designed project thumbnail patterns */
 .pc-emo::before{content:'';position:absolute;inset:0;opacity:.18}
 .pc[data-id="0"] .pc-emo::before{background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.12) 12px,rgba(255,255,255,.12) 13px)}
 .pc[data-id="1"] .pc-emo::before{background:radial-gradient(circle at 20% 80%,rgba(52,212,183,.3) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(139,124,248,.3) 0%,transparent 50%)}
@@ -244,15 +225,15 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .ptag{padding:.18rem .58rem;border-radius:4px;font-size:.7rem;font-family:var(--fm);background:rgba(255,255,255,.045);color:var(--faint)}
 [data-theme="light"] .ptag{background:rgba(0,0,0,.05)}
 .pc-btns{display:flex;gap:.65rem}
-.pb{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:500;color:var(--muted);padding:.32rem .82rem;border:1px solid var(--border);border-radius:7px;transition:all .22s ease;cursor:none;background:none;font-family:var(--fb)}
+.pb{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:500;color:var(--muted);padding:.32rem .82rem;border:1px solid var(--border);border-radius:7px;transition:all .22s ease;background:none;font-family:var(--fb)}
 .pb:hover{color:var(--primary);border-color:var(--primary);background:var(--pdim)}
 .expand-hint{font-size:.68rem;color:var(--faint);position:absolute;bottom:.75rem;right:.95rem;opacity:0;transition:opacity .25s ease;pointer-events:none}
 .pc:hover .expand-hint{opacity:1}
 
-/* ═══ CERTIFICATIONS ══════════════════════════════ */
+/* ── CERTIFICATIONS ──────────────────────────── */
 #certifications{background:var(--bg)}
 .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
-.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;cursor:none;transition:all .3s ease}
+.cc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;cursor:pointer;transition:all .3s ease}
 .cc:hover{border-color:rgba(52,212,183,.3);transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,.25)}
 .cc-icon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
 .cc-info{flex:1}
@@ -262,14 +243,14 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .cc-view{margin-left:auto;font-size:.71rem;font-weight:500;color:var(--faint);transition:color .2s;flex-shrink:0;align-self:center}
 .cc:hover .cc-view{color:var(--teal)}
 
-/* ═══ EDUCATION + ACHIEVEMENTS ═══════════════════ */
+/* ── EDUCATION + ACHIEVEMENTS ────────────────── */
 #education{background:var(--surface)}
 .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
 .tl{position:relative;padding-left:2.75rem}
 .tl::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--primary),var(--teal),transparent);border-radius:2px}
 .ti{position:relative;margin-bottom:2.25rem}
 .ti:last-child{margin-bottom:0}
-.tdot{position:absolute;left:-2.75rem;top:6px;width:14px;height:14px;border:2.5px solid var(--primary);border-radius:50%;background:var(--bg);transition:all .3s ease}
+.tdot{position:absolute;left:-2.75rem;top:6px;width:14px;height:14px;border:2.5px solid var(--primary);border-radius:50%;background:var(--surface);transition:all .3s ease}
 .ti:hover .tdot{background:var(--primary);box-shadow:0 0 14px rgba(139,124,248,.6)}
 .tcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem;transition:border-color .3s ease}
 .ti:hover .tcard{border-color:rgba(139,124,248,.28)}
@@ -284,7 +265,7 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .ach-title{font-size:.9rem;font-weight:600;margin-bottom:.18rem}
 .ach-sub{font-size:.78rem;color:var(--muted)}
 
-/* ═══ TESTIMONIALS ════════════════════════════════ */
+/* ── TESTIMONIALS ────────────────────────────── */
 #testimonials{background:var(--bg)}
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem}
 .testi{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:1.75rem;position:relative;transition:all .3s ease}
@@ -296,7 +277,7 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .testi-name{font-size:.88rem;font-weight:600}
 .testi-role{font-size:.77rem;color:var(--muted)}
 
-/* ═══ NOW STRIP ═══════════════════════════════════ */
+/* ── NOW STRIP ───────────────────────────────── */
 #now{background:var(--surface);padding:2.5rem max(1.5rem,5vw)}
 .now-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
 .now-label{font-family:var(--fm);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);flex-shrink:0;display:flex;align-items:center;gap:.45rem}
@@ -306,7 +287,7 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .now-item:hover{border-color:var(--teal);color:var(--teal)}
 .now-item-label{font-size:.68rem;color:var(--faint)}
 
-/* ═══ CONTACT ══════════════════════════════════════ */
+/* ── CONTACT ─────────────────────────────────── */
 #contact{background:var(--bg)}
 .contact-box{max-width:680px;margin:0 auto;text-align:center}
 .contact-box .eyebrow{justify-content:center}
@@ -320,19 +301,19 @@ body:has(a:hover) #cur-ring,body:has(button:hover) #cur-ring{width:48px;height:4
 .fg input:focus,.fg textarea:focus{border-color:var(--primary);background:rgba(139,124,248,.05)}
 .fg input::placeholder,.fg textarea::placeholder{color:var(--faint)}
 .fg textarea{resize:vertical;min-height:128px}
-.btn-send{width:100%;padding:.9rem;background:linear-gradient(135deg,var(--primary),#6C5CE7);border-radius:var(--r);font-weight:600;font-size:.93rem;color:#fff;transition:all .3s ease;border:none;cursor:none;font-family:var(--fb)}
+/* email field with copy button */
+.email-row{display:flex;align-items:center;gap:.6rem;justify-content:center;margin-top:1.25rem}
+.email-chip{font-family:var(--fm);font-size:.88rem;color:var(--muted);padding:.5rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:8px;letter-spacing:.02em}
+.copy-btn{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:500;color:var(--muted);padding:.48rem .9rem;border:1px solid var(--border);border-radius:8px;background:transparent;transition:all .25s ease}
+.copy-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--tdim)}
+.btn-send{width:100%;padding:.9rem;background:linear-gradient(135deg,var(--primary),#6C5CE7);border-radius:var(--r);font-weight:600;font-size:.93rem;color:#fff;transition:all .3s ease;border:none;font-family:var(--fb)}
 .btn-send:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(139,124,248,.4)}
 .btn-send:disabled{opacity:.7;cursor:not-allowed;transform:none;box-shadow:none}
 .socials{display:flex;justify-content:center;gap:.85rem;margin-top:2rem;flex-wrap:wrap}
 .soc{display:inline-flex;align-items:center;gap:.45rem;padding:.55rem 1.15rem;border:1px solid var(--border);border-radius:8px;font-size:.83rem;font-weight:500;color:var(--muted);transition:all .25s ease}
 .soc:hover{color:var(--text);border-color:var(--primary);background:var(--pdim);transform:translateY(-2px)}
 
-/* ═══ BACK TO TOP ══════════════════════════════════ */
-#top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--card);border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--muted);cursor:none;transition:all .3s ease;opacity:0;pointer-events:none;z-index:100}
-#top.show{opacity:1;pointer-events:all}
-#top:hover{background:var(--pdim);border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
-
-/* ═══ FOOTER ═══════════════════════════════════════ */
+/* ── FOOTER ──────────────────────────────────── */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75rem max(1.5rem,5vw);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .fc{font-size:.8rem;color:var(--faint)}
 .fc span{color:var(--primary)}
@@ -340,13 +321,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
 .fn a{font-size:.8rem;color:var(--faint);transition:color .2s}
 .fn a:hover{color:var(--primary)}
 
-/* ═══ MODAL ════════════════════════════════════════ */
+/* ── MODAL ───────────────────────────────────── */
 #mbd{position:fixed;inset:0;background:rgba(8,11,24,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:1.25rem;opacity:0;pointer-events:none;transition:opacity .3s ease}
 #mbd.on{opacity:1;pointer-events:all}
 #mbox{background:var(--card);border:1px solid var(--border2);border-radius:var(--rl);max-width:700px;width:100%;max-height:90vh;overflow-y:auto;scrollbar-width:thin;transform:translateY(28px) scale(.96);transition:transform .38s ease}
 #mbd.on #mbox{transform:translateY(0) scale(1)}
 .m-head{padding:1.5rem 1.5rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-#m-close{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:none;transition:all .2s ease;flex-shrink:0}
+#m-close{width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .2s ease;flex-shrink:0}
 #m-close:hover{background:var(--cdim);border-color:var(--coral);color:var(--coral)}
 #m-thumb{margin:1.25rem 1.5rem;border-radius:var(--r);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:4.5rem}
 .m-body{padding:0 1.5rem 1.75rem}
@@ -362,11 +343,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
 .ml-s{display:inline-flex;align-items:center;gap:.45rem;padding:.7rem 1.35rem;border-radius:var(--r);font-size:.87rem;font-weight:500;border:1px solid var(--border2);color:var(--muted);transition:all .25s ease}
 .ml-s:hover{border-color:var(--teal);color:var(--teal);background:var(--tdim)}
 
-/* ═══ TOAST ════════════════════════════════════════ */
-#toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(70px);background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:.78rem 1.2rem;display:flex;align-items:center;gap:.6rem;font-size:.87rem;color:var(--text);z-index:3000;opacity:0;pointer-events:none;transition:transform .36s ease,opacity .36s ease;white-space:nowrap;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+/* ── TOAST ───────────────────────────────────── */
+#toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(70px);background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:.78rem 1.2rem;font-size:.87rem;color:var(--text);z-index:3000;opacity:0;pointer-events:none;transition:transform .36s ease,opacity .36s ease;white-space:nowrap;box-shadow:0 10px 40px rgba(0,0,0,.5)}
 #toast.on{transform:translateX(-50%) translateY(0);opacity:1}
 
-/* ═══ EASTER EGG ════════════════════════════════════ */
+/* ── EASTER EGG ──────────────────────────────── */
 #egg{position:fixed;inset:0;background:rgba(8,11,24,.97);z-index:9990;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;opacity:0;pointer-events:none;transition:opacity .5s ease}
 #egg.on{opacity:1;pointer-events:all}
 .egg-inner{text-align:center;max-width:480px;padding:2rem}
@@ -374,41 +355,18 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
 @keyframes eggpop{from{transform:scale(0) rotate(-20deg)}to{transform:scale(1) rotate(0deg)}}
 .egg-title{font-family:var(--fd);font-size:1.75rem;font-weight:700;background:linear-gradient(135deg,var(--primary),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.75rem}
 .egg-msg{color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem}
-.egg-close{padding:.65rem 1.75rem;background:linear-gradient(135deg,var(--primary),var(--teal));border-radius:var(--r);font-weight:600;font-size:.9rem;color:#fff;cursor:none;transition:all .25s ease}
+.egg-close{padding:.65rem 1.75rem;background:linear-gradient(135deg,var(--primary),var(--teal));border-radius:var(--r);font-weight:600;font-size:.9rem;color:#fff;transition:all .25s ease}
 .egg-close:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(139,124,248,.4)}
 
-/* ═══ RESPONSIVE ════════════════════════════════════ */
+/* ── RESPONSIVE ──────────────────────────────── */
+@media(max-width:960px){.hero-desc{max-width:100%}.hero-btns{justify-content:center}}
 @media(max-width:1000px){.process-grid{grid-template-columns:repeat(2,1fr)}.process-grid::before{display:none}.edu-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem}.av-wrap{max-width:240px;margin:0 auto}.gh-stats{grid-template-columns:1fr}}
-@media(max-width:768px){
-  #nav{padding:0 1.25rem}
-  .nav-links{display:none;position:fixed;top:var(--nav);left:0;right:0;flex-direction:column;align-items:flex-start;background:rgba(8,11,24,.97);backdrop-filter:blur(24px);padding:1.75rem 1.5rem;gap:1.35rem;border-bottom:1px solid var(--border);z-index:999}
-  [data-theme="light"] .nav-links{background:rgba(245,245,252,.97)}
-  .nav-links.open{display:flex}
-  .nav-links a{font-size:1rem}
-  .btn-resume{display:none}
-  .burger{display:flex}
-  .sec{padding:4rem 1.25rem}
-  .cf-row{grid-template-columns:1fr}
-  footer{flex-direction:column;text-align:center}
-  #top{bottom:1.25rem;right:1.25rem}
-  .now-inner{flex-direction:column;align-items:flex-start;gap:1rem}
-}
+@media(max-width:768px){#nav{padding:0 1.25rem}.nav-links{display:none;position:fixed;top:var(--nav);left:0;right:0;flex-direction:column;align-items:flex-start;background:rgba(8,11,24,.97);backdrop-filter:blur(24px);padding:1.75rem 1.5rem;gap:1.35rem;border-bottom:1px solid var(--border);z-index:999}[data-theme="light"] .nav-links{background:rgba(245,245,252,.97)}.nav-links.open{display:flex}.nav-links a{font-size:1rem}.btn-resume{display:none}.burger{display:flex}.sec{padding:4rem 1.25rem}.cf-row{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.now-inner{flex-direction:column;align-items:flex-start;gap:1rem}#otw{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}}
 </style>
 </head>
 <body>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-logo">YN</div><!-- TODO: change to your initials -->
-  <div class="loader-bar"><div class="loader-fill"></div></div>
-  <div class="loader-txt">Loading portfolio</div>
-</div>
-
-<!-- CUSTOM CURSOR -->
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
 
 <!-- PROGRESS BAR -->
 <div id="prog" aria-hidden="true"></div>
@@ -416,9 +374,35 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
 <!-- MOBILE NAV OVERLAY -->
 <div id="nav-overlay" onclick="closeNav()"></div>
 
-<!-- ═══════ NAV ═══════════════════════════════════ -->
+<!-- SIDE NAVIGATION DOTS -->
+<nav id="side-dots" aria-label="Section navigation">
+  <button class="sd" data-target="home"          data-label="Home"         onclick="navTo('home')"></button>
+  <button class="sd" data-target="about"         data-label="About"        onclick="navTo('about')"></button>
+  <button class="sd" data-target="process"       data-label="Process"      onclick="navTo('process')"></button>
+  <button class="sd" data-target="skills"        data-label="Skills"       onclick="navTo('skills')"></button>
+  <button class="sd" data-target="projects"      data-label="Projects"     onclick="navTo('projects')"></button>
+  <button class="sd" data-target="certifications" data-label="Certs"       onclick="navTo('certifications')"></button>
+  <button class="sd" data-target="education"     data-label="Education"    onclick="navTo('education')"></button>
+  <button class="sd" data-target="testimonials"  data-label="Reviews"      onclick="navTo('testimonials')"></button>
+  <button class="sd" data-target="contact"       data-label="Contact"      onclick="navTo('contact')"></button>
+</nav>
+
+<!-- OPEN TO WORK BADGE -->
+<div id="otw" onclick="navTo('contact')" role="button" tabindex="0" aria-label="Open to work — contact me">
+  <span class="otw-dot"></span>Open to work
+</div>
+
+<!-- BACK TO TOP (with circular scroll progress) -->
+<div id="top-wrap">
+  <svg id="top-svg" viewBox="0 0 48 48" aria-hidden="true">
+    <circle cx="24" cy="24" r="22" id="top-circle"/>
+  </svg>
+  <button id="top-btn" onclick="navTo('home')" aria-label="Back to top">↑</button>
+</div>
+
+<!-- ═══════ NAV ═══════════════════════════════ -->
 <nav id="nav" role="navigation" aria-label="Main navigation">
-  <span class="logo" onclick="navTo('home')" tabindex="0" role="link">YN.dev</span><!-- TODO: update initials -->
+  <div style="width:80px"></div><!-- spacer -->
 
   <ul class="nav-links" id="navLinks">
     <li><a href="#about"          onclick="navTo('about',event)">About</a></li>
@@ -432,8 +416,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
   </ul>
 
   <div class="nav-right">
-    <button class="btn-theme" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
-    <!-- TODO: set href to your resume PDF, e.g. href="resume.pdf" -->
+    <button class="btn-theme" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+    <!-- TODO: set href="resume.pdf" when you have the file ready -->
     <a href="#" class="btn-resume" onclick="handleResume(event)">Resume ↓</a>
   </div>
 
@@ -442,42 +426,44 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
   </button>
 </nav>
 
-<!-- ═══════ HERO ════════════════════════════════════ -->
+<!-- ═══════ HERO ════════════════════════════════ -->
 <section id="home" aria-label="Introduction">
   <div class="orb o1"></div>
   <div class="orb o2"></div>
   <div class="orb o3"></div>
-  <div class="hero-inner">
-    <!-- TODO: update with your availability timeline -->
+
+  <div class="hero-wrap">
+    <!-- TODO: update availability timeline -->
     <div class="hero-badge"><span class="bdot"></span>Available for internships · Summer 2025</div>
     <!-- TODO: update name -->
-    <h1 class="hero-title">Hi, I'm <span class="grad">Your Name</span></h1>
+    <h1 class="hero-title">Hi, I'm<br><span class="grad">Your Name</span></h1>
     <p class="hero-role">I'm a <span class="typed" id="typed"></span><span class="cur"></span></p>
     <!-- TODO: update tagline -->
-    <p class="hero-desc">A 3rd year Computer Science student crafting clean, user-centered digital experiences — where thoughtful design meets solid engineering.</p>
+    <p class="hero-desc">3rd year Computer Science student crafting clean, user-centered digital experiences — where thoughtful design meets solid engineering.</p>
     <div class="hero-btns">
       <button class="btn-p" onclick="navTo('projects')">View My Work ↓</button>
       <a href="#" class="btn-o" onclick="handleResume(event)">Download CV</a>
     </div>
   </div>
+
   <div class="scroll-hint" aria-hidden="true">
     <span>scroll</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- ═══════ ABOUT ════════════════════════════════════ -->
+<!-- ═══════ ABOUT ════════════════════════════════ -->
 <section id="about" class="sec" aria-labelledby="about-h">
   <div class="wrap">
     <div class="about-grid">
       <div class="reveal">
         <div class="av-wrap">
           <div class="av-box">
-            <!-- TODO: replace with your photo: <img src="photo.jpg" alt="Your Name" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"> -->
+            <!-- TODO: replace with: <img src="photo.jpg" alt="Your Name" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"> -->
             <div class="av-emoji">👤</div>
             <div class="av-hint">// add your photo</div>
           </div>
-          <!-- TODO: update college name -->
+          <!-- TODO: update college -->
           <div class="av-badge"><span class="av-dot"></span>BE CSE — [College Name]</div>
         </div>
       </div>
@@ -489,11 +475,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
         <!-- TODO: update bio -->
         <p class="reveal d1">I'm a passionate UI/UX designer and Computer Science Engineering student currently in my 3rd year at [Your College]. I thrive at the intersection of design and technology — where beautiful interfaces meet clean, maintainable code.</p>
         <p class="reveal d2">Beyond the screen, I actively participate in hackathons, contribute to open source, and stay up to date with evolving design systems and frontend trends. I believe great software is as much about feel as it is about function.</p>
-        <!-- TODO: update numbers -->
+        <!-- animated counters — data-target is the final number, data-suffix is what comes after -->
         <div class="stats">
-          <div class="stat reveal d1"><div class="stat-n">3rd</div><div class="stat-l">Year CSE</div></div>
-          <div class="stat reveal d2"><div class="stat-n">10+</div><div class="stat-l">Projects</div></div>
-          <div class="stat reveal d3"><div class="stat-n">2+</div><div class="stat-l">Yrs Design</div></div>
+          <div class="stat reveal d1"><div class="stat-n" data-target="3" data-suffix="rd">0</div><div class="stat-l">Year CSE</div></div>
+          <div class="stat reveal d2"><div class="stat-n" data-target="10" data-suffix="+">0</div><div class="stat-l">Projects</div></div>
+          <div class="stat reveal d3"><div class="stat-n" data-target="2" data-suffix="+">0</div><div class="stat-l">Yrs Design</div></div>
         </div>
         <!-- TODO: update chips -->
         <div class="chips reveal d3">
@@ -501,9 +487,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
           <span class="chip">Data Structures</span><span class="chip">Open Source</span>
           <span class="chip">Machine Learning</span><span class="chip">Hackathons</span>
         </div>
-        <!-- TODO: replace yourusername with your actual GitHub username -->
+        <!-- TODO: replace yourusername with your GitHub username -->
         <div class="gh-stats reveal d4">
-          <img src="https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&hide_border=true&bg_color=00000000&title_color=8B7CF8&icon_color=34D4B7&text_color=8B92B2&hide_title=false" alt="GitHub stats" loading="lazy">
+          <img src="https://github-readme-stats.vercel.app/api?username=yourusername&show_icons=true&hide_border=true&bg_color=00000000&title_color=8B7CF8&icon_color=34D4B7&text_color=8B92B2" alt="GitHub stats" loading="lazy">
           <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yourusername&layout=compact&hide_border=true&bg_color=00000000&title_color=8B7CF8&text_color=8B92B2" alt="Top languages" loading="lazy">
         </div>
       </div>
@@ -511,39 +497,19 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
   </div>
 </section>
 
-<!-- ═══════ PROCESS ════════════════════════════════ -->
+<!-- ═══════ PROCESS ══════════════════════════════ -->
 <section id="process" class="sec" aria-labelledby="process-h">
   <div class="wrap">
     <div class="sec-hdr reveal">
       <div class="eyebrow">How I Work</div>
       <h2 class="sec-title" id="process-h">My Design Process</h2>
-      <p class="sec-sub">Every project follows a structured approach that keeps users at the center of every decision.</p>
+      <p class="sec-sub">Every project follows a structured approach that keeps users at the centre of every decision.</p>
     </div>
     <div class="process-grid">
-      <div class="pstep reveal d1">
-        <div class="pstep-num">01</div>
-        <div class="pstep-icon">🔍</div>
-        <div class="pstep-title">Discover</div>
-        <div class="pstep-desc">User interviews, competitor analysis, and research to deeply understand the problem space and the people we're designing for.</div>
-      </div>
-      <div class="pstep reveal d2">
-        <div class="pstep-num">02</div>
-        <div class="pstep-icon">🎯</div>
-        <div class="pstep-title">Define</div>
-        <div class="pstep-desc">Synthesise findings into clear problem statements, user personas, and measurable success criteria before touching Figma.</div>
-      </div>
-      <div class="pstep reveal d3">
-        <div class="pstep-num">03</div>
-        <div class="pstep-icon">✏️</div>
-        <div class="pstep-title">Design</div>
-        <div class="pstep-desc">Rapid wireframes → hi-fi mockups → interactive prototypes, with multiple iterations driven by feedback and data.</div>
-      </div>
-      <div class="pstep reveal d4">
-        <div class="pstep-num">04</div>
-        <div class="pstep-icon">🚀</div>
-        <div class="pstep-title">Deliver</div>
-        <div class="pstep-desc">Usability testing, developer hand-off with detailed specs, and post-launch measurement to validate impact.</div>
-      </div>
+      <div class="pstep reveal d1"><div class="pstep-num">01</div><div class="pstep-icon">🔍</div><div class="pstep-title">Discover</div><div class="pstep-desc">User interviews, competitor analysis, and research to understand the problem space and the people we're designing for.</div></div>
+      <div class="pstep reveal d2"><div class="pstep-num">02</div><div class="pstep-icon">🎯</div><div class="pstep-title">Define</div><div class="pstep-desc">Synthesise findings into clear problem statements, user personas, and measurable success criteria before touching Figma.</div></div>
+      <div class="pstep reveal d3"><div class="pstep-num">03</div><div class="pstep-icon">✏️</div><div class="pstep-title">Design</div><div class="pstep-desc">Rapid wireframes → hi-fi mockups → interactive prototypes, with multiple iterations driven by feedback and data.</div></div>
+      <div class="pstep reveal d4"><div class="pstep-num">04</div><div class="pstep-icon">🚀</div><div class="pstep-title">Deliver</div><div class="pstep-desc">Usability testing, developer hand-off with detailed specs, and post-launch measurement to validate impact.</div></div>
     </div>
   </div>
 </section>
@@ -554,40 +520,16 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
     <div class="sec-hdr reveal">
       <div class="eyebrow">What I Know</div>
       <h2 class="sec-title" id="skills-h">Skills &amp; Technologies</h2>
-      <p class="sec-sub">Click any pill to highlight it. A blend of design craft and engineering built over 3 years.</p>
+      <p class="sec-sub">Click any pill to highlight it. Built over 3 years of design and engineering.</p>
     </div>
     <div class="sk-grid">
-      <!-- TODO: add/remove skills -->
-      <div class="sk-card reveal d1">
-        <div class="sk-icon" style="background:rgba(139,124,248,.13)">🎨</div>
-        <div class="sk-name">Design Tools</div>
-        <div class="pills"><span class="pill">Figma</span><span class="pill">Adobe XD</span><span class="pill">Illustrator</span><span class="pill">Photoshop</span><span class="pill">Framer</span></div>
-      </div>
-      <div class="sk-card reveal d2">
-        <div class="sk-icon" style="background:rgba(52,212,183,.12)">💻</div>
-        <div class="sk-name">Languages</div>
-        <div class="pills"><span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">C / C++</span><span class="pill">Java</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">SQL</span></div>
-      </div>
-      <div class="sk-card reveal d3">
-        <div class="sk-icon" style="background:rgba(249,112,102,.12)">⚡</div>
-        <div class="sk-name">Frameworks</div>
-        <div class="pills"><span class="pill">React.js</span><span class="pill">Node.js</span><span class="pill">Tailwind CSS</span><span class="pill">Express.js</span><span class="pill">Bootstrap</span></div>
-      </div>
-      <div class="sk-card reveal d1">
-        <div class="sk-icon" style="background:rgba(255,200,80,.1)">🔧</div>
-        <div class="sk-name">Tools &amp; Platforms</div>
-        <div class="pills"><span class="pill">Git &amp; GitHub</span><span class="pill">VS Code</span><span class="pill">Postman</span><span class="pill">MongoDB</span><span class="pill">Firebase</span></div>
-      </div>
-      <div class="sk-card reveal d2">
-        <div class="sk-icon" style="background:rgba(139,124,248,.13)">🧠</div>
-        <div class="sk-name">UX Skills</div>
-        <div class="pills"><span class="pill">Wireframing</span><span class="pill">Prototyping</span><span class="pill">User Research</span><span class="pill">Usability Testing</span><span class="pill">Design Systems</span></div>
-      </div>
-      <div class="sk-card reveal d3">
-        <div class="sk-icon" style="background:rgba(52,212,183,.12)">📐</div>
-        <div class="sk-name">CS Fundamentals</div>
-        <div class="pills"><span class="pill">DSA</span><span class="pill">OOP</span><span class="pill">DBMS</span><span class="pill">OS</span><span class="pill">Computer Networks</span></div>
-      </div>
+      <!-- TODO: add/remove skill pills -->
+      <div class="sk-card reveal d1"><div class="sk-icon" style="background:rgba(139,124,248,.13)">🎨</div><div class="sk-name">Design Tools</div><div class="pills"><span class="pill">Figma</span><span class="pill">Adobe XD</span><span class="pill">Illustrator</span><span class="pill">Photoshop</span><span class="pill">Framer</span></div></div>
+      <div class="sk-card reveal d2"><div class="sk-icon" style="background:rgba(52,212,183,.12)">💻</div><div class="sk-name">Languages</div><div class="pills"><span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">C / C++</span><span class="pill">Java</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">SQL</span></div></div>
+      <div class="sk-card reveal d3"><div class="sk-icon" style="background:rgba(249,112,102,.12)">⚡</div><div class="sk-name">Frameworks</div><div class="pills"><span class="pill">React.js</span><span class="pill">Node.js</span><span class="pill">Tailwind CSS</span><span class="pill">Express.js</span><span class="pill">Bootstrap</span></div></div>
+      <div class="sk-card reveal d1"><div class="sk-icon" style="background:rgba(255,200,80,.1)">🔧</div><div class="sk-name">Tools &amp; Platforms</div><div class="pills"><span class="pill">Git &amp; GitHub</span><span class="pill">VS Code</span><span class="pill">Postman</span><span class="pill">MongoDB</span><span class="pill">Firebase</span></div></div>
+      <div class="sk-card reveal d2"><div class="sk-icon" style="background:rgba(139,124,248,.13)">🧠</div><div class="sk-name">UX Skills</div><div class="pills"><span class="pill">Wireframing</span><span class="pill">Prototyping</span><span class="pill">User Research</span><span class="pill">Usability Testing</span><span class="pill">Design Systems</span></div></div>
+      <div class="sk-card reveal d3"><div class="sk-icon" style="background:rgba(52,212,183,.12)">📐</div><div class="sk-name">CS Fundamentals</div><div class="pills"><span class="pill">DSA</span><span class="pill">OOP</span><span class="pill">DBMS</span><span class="pill">OS</span><span class="pill">Computer Networks</span></div></div>
     </div>
   </div>
 </section>
@@ -603,54 +545,32 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
     <div class="proj-grid">
       <!-- TODO: replace with your real projects -->
       <article class="pc reveal d1" data-id="0" tabindex="0" role="button" aria-label="E-Commerce Redesign">
-        <div class="pc-thumb">
-          <div class="pc-emo" style="background:linear-gradient(135deg,#170d3c,#2d1b6e,#1a0a3c)">🛍️</div>
-          <div class="pc-overlay"></div>
-          <span class="badge b-ux">UI/UX Design</span>
-        </div>
+        <div class="pc-thumb"><div class="pc-emo" style="background:linear-gradient(135deg,#170d3c,#2d1b6e,#1a0a3c)">🛍️</div><div class="pc-overlay"></div><span class="badge b-ux">UI/UX Design</span></div>
         <div class="pc-body">
           <div class="pc-title">E-Commerce App Redesign</div>
           <div class="pc-desc">Redesigned a retail app's shopping experience — reduced checkout from 5 steps to 2 and boosted conversion by 32%.</div>
           <div class="pc-tags"><span class="ptag">Figma</span><span class="ptag">User Research</span><span class="ptag">Prototyping</span></div>
-          <div class="pc-btns">
-            <button class="pb" data-action="casestudy">🔗 Case Study</button>
-            <button class="pb" data-action="preview">👁 Preview</button>
-          </div>
+          <div class="pc-btns"><button class="pb" data-action="casestudy">🔗 Case Study</button><button class="pb" data-action="preview">👁 Preview</button></div>
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
       <article class="pc reveal d2" data-id="1" tabindex="0" role="button" aria-label="Student Portal">
-        <div class="pc-thumb">
-          <div class="pc-emo" style="background:linear-gradient(135deg,#0a2a1a,#0d4a2e,#082015)">📊</div>
-          <div class="pc-overlay"></div>
-          <span class="badge b-dev">Full Stack</span>
-        </div>
+        <div class="pc-thumb"><div class="pc-emo" style="background:linear-gradient(135deg,#0a2a1a,#0d4a2e,#082015)">📊</div><div class="pc-overlay"></div><span class="badge b-dev">Full Stack</span></div>
         <div class="pc-body">
           <div class="pc-title">Student Management Portal</div>
           <div class="pc-desc">Full-stack app for 200+ students — real-time attendance, grade book, assignments, and faculty analytics dashboard.</div>
           <div class="pc-tags"><span class="ptag">React</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span></div>
-          <div class="pc-btns">
-            <!-- TODO: update to your real GitHub link -->
-            <a href="https://github.com/yourusername" class="pb" target="_blank" rel="noopener" onclick="event.stopPropagation()">📁 GitHub</a>
-            <button class="pb" data-action="livedemo">🚀 Live Demo</button>
-          </div>
+          <div class="pc-btns"><a href="https://github.com/yourusername" class="pb" target="_blank" rel="noopener" onclick="event.stopPropagation()">📁 GitHub</a><button class="pb" data-action="livedemo">🚀 Live Demo</button></div>
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
       <article class="pc reveal d3" data-id="2" tabindex="0" role="button" aria-label="Sentiment Analysis">
-        <div class="pc-thumb">
-          <div class="pc-emo" style="background:linear-gradient(135deg,#1a0a18,#3a1040,#1a0828)">🤖</div>
-          <div class="pc-overlay"></div>
-          <span class="badge b-ml">ML / AI</span>
-        </div>
+        <div class="pc-thumb"><div class="pc-emo" style="background:linear-gradient(135deg,#1a0a18,#3a1040,#1a0828)">🤖</div><div class="pc-overlay"></div><span class="badge b-ml">ML / AI</span></div>
         <div class="pc-body">
           <div class="pc-title">Sentiment Analysis Tool</div>
-          <div class="pc-desc">Fine-tuned BERT model on 50k reviews — 91.4% accuracy — with a live Streamlit interface and attention heatmaps.</div>
+          <div class="pc-desc">Fine-tuned BERT on 50k reviews — 91.4% accuracy — with a live Streamlit UI and attention heatmaps.</div>
           <div class="pc-tags"><span class="ptag">Python</span><span class="ptag">BERT</span><span class="ptag">Streamlit</span></div>
-          <div class="pc-btns">
-            <a href="https://github.com/yourusername" class="pb" target="_blank" rel="noopener" onclick="event.stopPropagation()">📁 GitHub</a>
-            <button class="pb" data-action="report">📄 Report</button>
-          </div>
+          <div class="pc-btns"><a href="https://github.com/yourusername" class="pb" target="_blank" rel="noopener" onclick="event.stopPropagation()">📁 GitHub</a><button class="pb" data-action="report">📄 Report</button></div>
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
@@ -664,25 +584,13 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
     <div class="sec-hdr reveal">
       <div class="eyebrow">Credentials</div>
       <h2 class="sec-title" id="cert-h">Certifications</h2>
-      <p class="sec-sub">Click a card to view the credential. Update <code style="font-family:var(--fm);font-size:.85em">data-link</code> to your certificate URL.</p>
+      <p class="sec-sub">Click a card to view the credential. Set <code style="font-family:var(--fm);font-size:.85em">data-link</code> to your certificate URL.</p>
     </div>
     <div class="cert-grid">
-      <!-- TODO: replace with your real certs -->
-      <div class="cc reveal d1" tabindex="0" role="button" data-link="#">
-        <div class="cc-icon" style="background:rgba(139,124,248,.13)">🎓</div>
-        <div class="cc-info"><div class="cc-name">Google UX Design Certificate</div><div class="cc-issuer">Coursera / Google</div><div class="cc-yr">2024</div></div>
-        <span class="cc-view">View ↗</span>
-      </div>
-      <div class="cc reveal d2" tabindex="0" role="button" data-link="#">
-        <div class="cc-icon" style="background:rgba(52,212,183,.12)">⚡</div>
-        <div class="cc-info"><div class="cc-name">React — The Complete Guide</div><div class="cc-issuer">Udemy / Maximilian Schwarzmüller</div><div class="cc-yr">2023</div></div>
-        <span class="cc-view">View ↗</span>
-      </div>
-      <div class="cc reveal d3" tabindex="0" role="button" data-link="#">
-        <div class="cc-icon" style="background:rgba(249,112,102,.12)">🐍</div>
-        <div class="cc-info"><div class="cc-name">Python for Data Science &amp; ML</div><div class="cc-issuer">NPTEL / IIT Madras</div><div class="cc-yr">2023</div></div>
-        <span class="cc-view">View ↗</span>
-      </div>
+      <!-- TODO: replace with your real certifications -->
+      <div class="cc reveal d1" tabindex="0" role="button" data-link="#"><div class="cc-icon" style="background:rgba(139,124,248,.13)">🎓</div><div class="cc-info"><div class="cc-name">Google UX Design Certificate</div><div class="cc-issuer">Coursera / Google</div><div class="cc-yr">2024</div></div><span class="cc-view">View ↗</span></div>
+      <div class="cc reveal d2" tabindex="0" role="button" data-link="#"><div class="cc-icon" style="background:rgba(52,212,183,.12)">⚡</div><div class="cc-info"><div class="cc-name">React — The Complete Guide</div><div class="cc-issuer">Udemy / Maximilian Schwarzmüller</div><div class="cc-yr">2023</div></div><span class="cc-view">View ↗</span></div>
+      <div class="cc reveal d3" tabindex="0" role="button" data-link="#"><div class="cc-icon" style="background:rgba(249,112,102,.12)">🐍</div><div class="cc-info"><div class="cc-name">Python for Data Science &amp; ML</div><div class="cc-issuer">NPTEL / IIT Madras</div><div class="cc-yr">2023</div></div><span class="cc-view">View ↗</span></div>
     </div>
   </div>
 </section>
@@ -696,45 +604,19 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
     </div>
     <div class="edu-grid">
       <div>
+        <!-- TODO: update with your real education -->
         <div class="tl reveal">
-          <!-- TODO: update with your real education -->
-          <div class="ti">
-            <div class="tdot"></div>
-            <div class="tcard">
-              <div class="t-yr">📅 2022 – Present</div>
-              <div class="t-school">[Your College / University Name]</div>
-              <div class="t-deg">B.E. Computer Science &amp; Engineering</div>
-              <span class="t-grade">⭐ CGPA: 8.5 / 10</span>
-            </div>
-          </div>
-          <div class="ti">
-            <div class="tdot"></div>
-            <div class="tcard">
-              <div class="t-yr">📅 2020 – 2022</div>
-              <div class="t-school">[Your School Name]</div>
-              <div class="t-deg">Higher Secondary Certificate (12th Grade)</div>
-              <span class="t-grade">⭐ Percentage: 95%</span>
-            </div>
-          </div>
+          <div class="ti"><div class="tdot"></div><div class="tcard"><div class="t-yr">📅 2022 – Present</div><div class="t-school">[Your College / University Name]</div><div class="t-deg">B.E. Computer Science &amp; Engineering</div><span class="t-grade">⭐ CGPA: 8.5 / 10</span></div></div>
+          <div class="ti"><div class="tdot"></div><div class="tcard"><div class="t-yr">📅 2020 – 2022</div><div class="t-school">[Your School Name]</div><div class="t-deg">Higher Secondary Certificate (12th Grade)</div><span class="t-grade">⭐ Percentage: 95%</span></div></div>
         </div>
       </div>
-      <div class="ach-grid">
+      <div>
         <!-- TODO: replace with your real achievements -->
-        <div class="ach reveal d1">
-          <div class="ach-icon">🏆</div>
-          <div><div class="ach-title">1st Place — Designathon 2024</div><div class="ach-sub">UI/UX track · 200+ participants · [College Name]</div></div>
-        </div>
-        <div class="ach reveal d2">
-          <div class="ach-icon">💡</div>
-          <div><div class="ach-title">Smart India Hackathon — Finalist</div><div class="ach-sub">National-level · Team of 6 · Problem statement: [PS ID]</div></div>
-        </div>
-        <div class="ach reveal d3">
-          <div class="ach-icon">📝</div>
-          <div><div class="ach-title">Paper Presentation — [Conference Name]</div><div class="ach-sub">Published research on [topic] · [Year]</div></div>
-        </div>
-        <div class="ach reveal d4">
-          <div class="ach-icon">🎖️</div>
-          <div><div class="ach-title">Dean's List — [Semester] 2024</div><div class="ach-sub">Top 5% of department · [College Name]</div></div>
+        <div class="ach-grid">
+          <div class="ach reveal d1"><div class="ach-icon">🏆</div><div><div class="ach-title">1st Place — Designathon 2024</div><div class="ach-sub">UI/UX track · 200+ participants · [College Name]</div></div></div>
+          <div class="ach reveal d2"><div class="ach-icon">💡</div><div><div class="ach-title">Smart India Hackathon — Finalist</div><div class="ach-sub">National-level · Team of 6 · Problem statement: [PS ID]</div></div></div>
+          <div class="ach reveal d3"><div class="ach-icon">📝</div><div><div class="ach-title">Paper Presentation — [Conference Name]</div><div class="ach-sub">Published research on [topic] · [Year]</div></div></div>
+          <div class="ach reveal d4"><div class="ach-icon">🎖️</div><div><div class="ach-title">Dean's List — [Semester] 2024</div><div class="ach-sub">Top 5% of department · [College Name]</div></div></div>
         </div>
       </div>
     </div>
@@ -750,38 +632,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
       <p class="sec-sub">Feedback from professors, collaborators, and project teammates.</p>
     </div>
     <div class="testi-grid">
-      <!-- TODO: replace with real testimonials — ask professors/teammates for 2 sentences -->
-      <div class="testi reveal d1">
-        <div class="testi-text">"[Your Name]'s ability to translate complex user research into clean, intuitive interfaces is exceptional for a student at this stage. Their work on [project] demonstrated real product thinking, not just visual design skills."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">PK</div><!-- TODO: initials -->
-          <div><div class="testi-name">Prof. [Name]</div><div class="testi-role">UI/UX Design Course, [College]</div></div>
-        </div>
-      </div>
-      <div class="testi reveal d2">
-        <div class="testi-text">"Working with [Your Name] on our hackathon project was a great experience. They owned the entire design and frontend, iterated fast under pressure, and delivered something we were all proud to demo."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">RS</div><!-- TODO: initials -->
-          <div><div class="testi-name">[Teammate Name]</div><div class="testi-role">Hackathon Collaborator, [College]</div></div>
-        </div>
-      </div>
-      <div class="testi reveal d3">
-        <div class="testi-text">"I reviewed [Your Name]'s code during our open-source contribution sprint — clean structure, meaningful variable names, well-documented. Exactly the habits that make a developer a joy to work with."</div>
-        <div class="testi-author">
-          <div class="testi-avatar">AM</div><!-- TODO: initials -->
-          <div><div class="testi-name">[Senior Dev / Mentor Name]</div><div class="testi-role">Project Mentor / Code Reviewer</div></div>
-        </div>
-      </div>
+      <!-- TODO: replace with real quotes — ask professors or teammates for 2 sentences -->
+      <div class="testi reveal d1"><div class="testi-text">"[Your Name]'s ability to translate complex user research into clean, intuitive interfaces is exceptional for a student at this stage. Their work on [project] demonstrated real product thinking, not just visual design skills."</div><div class="testi-author"><div class="testi-avatar">PK</div><div><div class="testi-name">Prof. [Name]</div><div class="testi-role">UI/UX Design Course, [College]</div></div></div></div>
+      <div class="testi reveal d2"><div class="testi-text">"Working with [Your Name] on our hackathon project was a great experience. They owned the entire design and frontend, iterated fast under pressure, and delivered something we were all proud to demo."</div><div class="testi-author"><div class="testi-avatar">RS</div><div><div class="testi-name">[Teammate Name]</div><div class="testi-role">Hackathon Collaborator, [College]</div></div></div></div>
+      <div class="testi reveal d3"><div class="testi-text">"I reviewed [Your Name]'s code during our open-source sprint — clean structure, meaningful variable names, well-documented. Exactly the habits that make a developer a joy to work with."</div><div class="testi-author"><div class="testi-avatar">AM</div><div><div class="testi-name">[Mentor Name]</div><div class="testi-role">Project Mentor / Code Reviewer</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ NOW STRIP ══════════════════════════════ -->
-<div id="now" aria-label="Currently">
+<!-- ═══════ NOW STRIP ════════════════════════════ -->
+<div id="now">
   <div class="now-inner">
     <div class="now-label"><span class="now-dot"></span>Now</div>
     <div class="now-items">
-      <!-- TODO: update these regularly — shows you're active and human -->
+      <!-- TODO: update these monthly — shows you're active -->
       <span class="now-item">🔨 <span><span class="now-item-label">Building</span> [Your current project]</span></span>
       <span class="now-item">📖 <span><span class="now-item-label">Reading</span> Don't Make Me Think — Steve Krug</span></span>
       <span class="now-item">🎓 <span><span class="now-item-label">Learning</span> Next.js 14 App Router</span></span>
@@ -811,8 +675,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
           <button type="submit" class="btn-send" id="send-btn">Send Message ✉️</button>
         </form>
       </div>
-      <!-- TODO: replace all placeholder URLs with your real profiles -->
-      <div class="socials reveal d2">
+      <!-- Copy email button -->
+      <div class="email-row reveal d2">
+        <!-- TODO: replace with your actual email -->
+        <span class="email-chip" id="email-text">youremail@gmail.com</span>
+        <button class="copy-btn" onclick="copyEmail()" id="copy-btn">📋 Copy email</button>
+      </div>
+      <!-- TODO: replace all placeholder URLs -->
+      <div class="socials reveal d3">
         <a href="https://linkedin.com/in/yourprofile" class="soc" target="_blank" rel="noopener">💼 LinkedIn</a>
         <a href="https://github.com/yourusername"     class="soc" target="_blank" rel="noopener">🐙 GitHub</a>
         <a href="mailto:youremail@gmail.com"          class="soc">📧 Email</a>
@@ -823,12 +693,9 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
   </div>
 </section>
 
-<!-- BACK TO TOP -->
-<button id="top" onclick="navTo('home')" aria-label="Back to top">↑</button>
-
 <!-- FOOTER -->
 <footer>
-  <!-- TODO: update name and year auto-updates -->
+  <!-- TODO: update name -->
   <p class="fc">Designed &amp; built by <span>Your Name</span> &copy; <span id="yr"></span></p>
   <nav class="fn" aria-label="Footer">
     <a href="#home"     onclick="navTo('home',event)">Top</a>
@@ -844,12 +711,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
     <div class="m-head"><span id="m-badge" class="badge b-ux"></span><button id="m-close" onclick="closeModal()" aria-label="Close">✕</button></div>
     <div id="m-thumb"></div>
     <div class="m-body">
-      <h2 id="m-title"></h2>
-      <p id="m-short"></p>
-      <div id="m-long"></div>
-      <div class="m-lbl">Tech stack</div>
-      <div id="m-tags"></div>
-      <div id="m-links"></div>
+      <h2 id="m-title"></h2><p id="m-short"></p><div id="m-long"></div>
+      <div class="m-lbl">Tech stack</div><div id="m-tags"></div><div id="m-links"></div>
     </div>
   </div>
 </div>
@@ -857,322 +720,259 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
 <!-- TOAST -->
 <div id="toast" role="status" aria-live="polite"></div>
 
-<!-- EASTER EGG (Konami code) -->
+<!-- EASTER EGG (Konami: ↑↑↓↓←→←→BA) -->
 <div id="egg">
   <div class="egg-inner">
     <div class="egg-emoji">🎮</div>
     <div class="egg-title">You found the secret!</div>
-    <div class="egg-msg">Not many people bother to type ↑ ↑ ↓ ↓ ← → ← → B A anymore. I respect that.<br><br>Since you're clearly thorough, you'd probably make a great collaborator. Hit me up! 🚀</div>
-    <button class="egg-close" onclick="document.getElementById('egg').classList.remove('on')">Close &amp; Send a Message ✉️</button>
+    <div class="egg-msg">Not many people type ↑ ↑ ↓ ↓ ← → ← → B A these days. I respect that level of thoroughness.<br><br>Since you're clearly detail-oriented, you'd probably make a great collaborator. Let's connect! 🚀</div>
+    <button class="egg-close" id="egg-close">Close &amp; Contact Me ✉️</button>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ═══════════════════════════════════════════
      JAVASCRIPT
-════════════════════════════════════════════════ -->
+═══════════════════════════════════════════ -->
 <script>
-/* ── LOADER ─────────────────────────────────── */
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('out');
-  }, 1600);
-});
-
-/* ── YEAR ───────────────────────────────────── */
+/* ── YEAR ────────────────────────────────── */
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-/* ── CUSTOM CURSOR ──────────────────────────── */
-const dot  = document.getElementById('cur-dot');
-const ring = document.getElementById('cur-ring');
-let rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  dot.style.left  = e.clientX + 'px';
-  dot.style.top   = e.clientY + 'px';
-  rx += (e.clientX - rx) * 0.18;
-  ry += (e.clientY - ry) * 0.18;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-});
-(function animRing() {
-  requestAnimationFrame(animRing);
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-})();
-document.addEventListener('mouseleave', () => { dot.style.opacity='0'; ring.style.opacity='0'; });
-document.addEventListener('mouseenter', () => { dot.style.opacity='1'; ring.style.opacity='1'; });
-
-/* ── THEME TOGGLE ───────────────────────────── */
-const html  = document.documentElement;
-const thBtn = document.getElementById('theme-btn');
-const saved = localStorage.getItem('theme') || 'dark';
-html.dataset.theme = saved;
-thBtn.textContent  = saved === 'dark' ? '🌙' : '☀️';
+/* ── THEME ───────────────────────────────── */
+const html   = document.documentElement;
+const thBtn  = document.getElementById('theme-btn');
+(function(){ const s = localStorage.getItem('theme') || 'dark'; html.dataset.theme = s; thBtn.textContent = s==='dark'?'🌙':'☀️'; })();
 function toggleTheme() {
-  const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-  html.dataset.theme  = next;
-  thBtn.textContent   = next === 'dark' ? '🌙' : '☀️';
-  localStorage.setItem('theme', next);
-  toast(next === 'light' ? '☀️' : '🌙', next === 'light' ? 'Light mode on' : 'Dark mode on');
+  const n = html.dataset.theme === 'dark' ? 'light' : 'dark';
+  html.dataset.theme = n; thBtn.textContent = n==='dark'?'🌙':'☀️';
+  localStorage.setItem('theme', n);
+  toast(n==='light'?'☀️':'🌙', n==='light'?'Light mode on':'Dark mode on');
 }
 
-/* ── SMOOTH SCROLL ──────────────────────────── */
+/* ── SMOOTH SCROLL ───────────────────────── */
 function navTo(id, e) {
   if (e) e.preventDefault();
-  const el  = document.getElementById(id);
-  if (!el) return;
+  const el = document.getElementById(id); if (!el) return;
   const off = document.getElementById('nav').offsetHeight + 8;
   window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
   closeNav();
 }
 
-/* ── TYPEWRITER ─────────────────────────────── */
+/* ── TYPEWRITER ──────────────────────────── */
 /* TODO: customise roles */
 const ROLES = ['UI/UX Designer','CSE Student','Frontend Developer','Problem Solver','Creative Thinker'];
 let ri=0, ci=0, del=false;
 const tEl = document.getElementById('typed');
-(function type() {
-  const cur = ROLES[ri];
-  tEl.textContent = del ? cur.slice(0, ci-1) : cur.slice(0, ci+1);
-  del ? ci-- : ci++;
-  let d = del ? 55 : 95;
-  if (!del && ci === cur.length)  { d = 2200; del = true; }
-  else if (del && ci === 0) { del = false; ri = (ri+1) % ROLES.length; d = 350; }
-  setTimeout(type, d);
-})();
+(function type(){ const c=ROLES[ri]; tEl.textContent=del?c.slice(0,ci-1):c.slice(0,ci+1); del?ci--:ci++; let d=del?55:95; if(!del&&ci===c.length){d=2200;del=true} else if(del&&ci===0){del=false;ri=(ri+1)%ROLES.length;d=350} setTimeout(type,d); })();
 
-/* ── PROGRESS BAR ───────────────────────────── */
-const prog = document.getElementById('prog');
+/* ── PROGRESS + BACK-TO-TOP RING ─────────── */
+const prog    = document.getElementById('prog');
+const topWrap = document.getElementById('top-wrap');
+const circle  = document.getElementById('top-circle');
+const CIRC    = 2 * Math.PI * 22; /* ~138 */
+circle.style.strokeDasharray = CIRC;
+circle.style.strokeDashoffset = CIRC;
 window.addEventListener('scroll', () => {
   const dh = document.documentElement.scrollHeight - window.innerHeight;
-  prog.style.width = (dh > 0 ? window.scrollY / dh * 100 : 0) + '%';
+  const pct = dh > 0 ? window.scrollY / dh : 0;
+  prog.style.width = (pct * 100) + '%';
+  circle.style.strokeDashoffset = CIRC * (1 - pct);
+  topWrap.classList.toggle('show', window.scrollY > 420);
 }, { passive: true });
 
-/* ── STICKY NAV ─────────────────────────────── */
+/* ── STICKY NAV ──────────────────────────── */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('stuck', window.scrollY > 20), { passive: true });
 
-/* ── ACTIVE NAV LINK ────────────────────────── */
+/* ── OPEN TO WORK BADGE ──────────────────── */
+const otw = document.getElementById('otw');
+window.addEventListener('scroll', () => otw.classList.toggle('show', window.scrollY > 100), { passive: true });
+otw.addEventListener('keydown', e => { if (e.key === 'Enter') navTo('contact'); });
+
+/* ── ACTIVE NAV + SIDE DOTS ──────────────── */
 document.querySelectorAll('section[id]').forEach(sec => {
   new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-        const a = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
-        if (a) a.classList.add('active');
-      }
+      if (!e.isIntersecting) return;
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      document.querySelectorAll('.sd').forEach(d => d.classList.remove('on'));
+      const a = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+      const d = document.querySelector(`.sd[data-target="${sec.id}"]`);
+      if (a) a.classList.add('active');
+      if (d) d.classList.add('on');
     });
   }, { threshold: 0.35, rootMargin: '-8% 0px -55% 0px' }).observe(sec);
 });
 
-/* ── MOBILE NAV ─────────────────────────────── */
+/* ── MOBILE NAV ──────────────────────────── */
 function toggleNav() {
-  const nl = document.getElementById('navLinks');
-  const b  = document.getElementById('burger');
-  const ov = document.getElementById('nav-overlay');
-  const open = nl.classList.toggle('open');
-  b.classList.toggle('open', open);
-  b.setAttribute('aria-expanded', open);
-  ov.classList.toggle('on', open);
+  const nl=document.getElementById('navLinks'), b=document.getElementById('burger'), ov=document.getElementById('nav-overlay');
+  const o=nl.classList.toggle('open'); b.classList.toggle('open',o); b.setAttribute('aria-expanded',o); ov.classList.toggle('on',o);
 }
 function closeNav() {
-  ['navLinks','burger','nav-overlay'].forEach((id, i) => {
-    const el = document.getElementById(id);
-    if (i < 2) el.classList.remove('open');
-    else el.classList.remove('on');
-  });
-  document.getElementById('burger').setAttribute('aria-expanded', 'false');
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('burger').setAttribute('aria-expanded','false');
+  document.getElementById('nav-overlay').classList.remove('on');
 }
 
-/* ── SCROLL REVEAL ──────────────────────────── */
-new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
-}, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' })
-.observe && document.querySelectorAll('.reveal').forEach(el => {
+/* ── SCROLL REVEAL ───────────────────────── */
+document.querySelectorAll('.reveal').forEach(el => {
   new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' }).observe(el);
 });
 
-/* ── BACK TO TOP ────────────────────────────── */
-const topBtn = document.getElementById('top');
-window.addEventListener('scroll', () => topBtn.classList.toggle('show', window.scrollY > 420), { passive: true });
-
-/* ── RESUME GUARD ───────────────────────────── */
-/* TODO: set href to your actual PDF, then remove onclick */
-function handleResume(e) {
-  const el = e.currentTarget || e.target;
-  if (!el.getAttribute('href') || el.getAttribute('href') === '#') {
-    e.preventDefault();
-    toast('📄', 'Add your PDF: set href="resume.pdf" on the Download CV button');
-  }
-}
-
-/* ── SKILL PILLS ────────────────────────────── */
-document.querySelectorAll('.pill').forEach(p => {
-  p.addEventListener('click', () => {
-    const was = p.classList.contains('on');
-    document.querySelectorAll('.pill').forEach(x => x.classList.remove('on'));
-    if (!was) p.classList.add('on');
-  });
+/* ── ANIMATED STAT COUNTERS ──────────────── */
+document.querySelectorAll('.stat-n[data-target]').forEach(el => {
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const target = +el.dataset.target, suffix = el.dataset.suffix || '';
+      let cur = 0; const step = target / 40;
+      const t = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = Math.floor(cur) + suffix;
+        if (cur >= target) clearInterval(t);
+      }, 35);
+      e.target.unobserve && e.target.unobserve(el);
+    });
+  }, { threshold: 0.5 }).observe(el);
 });
 
-/* ═══ PROJECT DATA ══════════════════════════════
-   TODO: Replace with your real project data.
-   Add more objects + matching HTML cards above.
-════════════════════════════════════════════════ */
+/* ── 3D CARD TILT ────────────────────────── */
+document.querySelectorAll('.pc').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width  - 0.5;
+    const y = (e.clientY - r.top)  / r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-7px)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+/* ── RESUME GUARD ────────────────────────── */
+/* TODO: set href="resume.pdf" on the button then remove onclick */
+function handleResume(e) {
+  const el = e.currentTarget || e.target;
+  if (!el.getAttribute('href') || el.getAttribute('href') === '#') { e.preventDefault(); toast('📄', 'Add your PDF: set href="resume.pdf" on the button'); }
+}
+
+/* ── SKILL PILLS ─────────────────────────── */
+document.querySelectorAll('.pill').forEach(p => {
+  p.addEventListener('click', () => { const w=p.classList.contains('on'); document.querySelectorAll('.pill').forEach(x=>x.classList.remove('on')); if(!w) p.classList.add('on'); });
+});
+
+/* ─── PROJECT DATA ────────────────────────
+   TODO: Replace with your real project info.
+   Add objects here and matching HTML cards above.
+──────────────────────────────────────────── */
 const PROJECTS = [
-  {
-    title: 'E-Commerce App Redesign', type: 'UI/UX Design', cls: 'b-ux',
-    emoji: '🛍️', bg: 'linear-gradient(135deg,#170d3c,#2d1b6e,#1a0a3c)',
-    short: 'End-to-end redesign of a retail app — reduced checkout from 5 steps to 2, boosting conversion by 32%.',
-    long:  'I conducted 12 user interviews, competitive analysis across 5 apps, and iterated through 3 rounds of usability testing. Key wins: simplified checkout flow, overhauled search & filter, and built a consistent design system across 40+ screens. The redesign also improved app store rating from 3.4★ to 4.6★.',
-    tags:  ['Figma','User Research','Prototyping','Design System','Usability Testing','A/B Testing'],
-    links: [{ label:'🔗 Case Study', url:'#', p:true },{ label:'👁 Preview', url:'#', p:false }]
-  },
-  {
-    title: 'Student Management Portal', type: 'Full Stack Dev', cls: 'b-dev',
-    emoji: '📊', bg: 'linear-gradient(135deg,#0a2a1a,#0d4a2e,#082015)',
-    short: 'Full-stack app for 200+ students — real-time attendance via QR, grade book, assignments, and faculty analytics.',
-    long:  'Secured with JWT auth and role-based access control. Uses Socket.io for real-time notifications, lazy loading and server-side pagination for performance under concurrent load. Faculty dashboard shows attendance trends, grade distributions, and submission rates using Chart.js. Cut manual attendance time by ~80%.',
-    tags:  ['React','Node.js','MongoDB','Socket.io','JWT Auth','Chart.js','Express'],
-    links: [{ label:'📁 GitHub', url:'https://github.com/yourusername', p:true },{ label:'🚀 Live Demo', url:'#', p:false }]
-  },
-  {
-    title: 'Sentiment Analysis Tool', type: 'ML / AI', cls: 'b-ml',
-    emoji: '🤖', bg: 'linear-gradient(135deg,#1a0a18,#3a1040,#1a0828)',
-    short: 'Fine-tuned BERT on 50k Amazon reviews — 91.4% accuracy with a live Streamlit UI and attention heatmaps.',
-    long:  'Model trained using PyTorch with mixed-precision on a Colab T4 GPU. Interface shows real-time inference with confidence bar charts and an attention heatmap highlighting which words drove the prediction. Evaluated against SVM, LSTM, and BiLSTM baselines — BERT outperformed all by 4–9%. Inference time < 200ms.',
-    tags:  ['Python','PyTorch','BERT','Hugging Face','Streamlit','scikit-learn','pandas'],
-    links: [{ label:'📁 GitHub', url:'https://github.com/yourusername', p:true },{ label:'📄 Report', url:'#', p:false }]
-  }
+  { title:'E-Commerce App Redesign',     type:'UI/UX Design', cls:'b-ux', emoji:'🛍️', bg:'linear-gradient(135deg,#170d3c,#2d1b6e,#1a0a3c)', short:'End-to-end redesign of a retail app — reduced checkout from 5 steps to 2, boosting conversion by 32%.', long:'I conducted 12 user interviews, competitive analysis across 5 apps, and iterated through 3 rounds of usability testing. Key wins: simplified checkout, overhauled search & filter, consistent design system across 40+ screens. App store rating improved from 3.4★ to 4.6★.', tags:['Figma','User Research','Prototyping','Design System','Usability Testing','A/B Testing'], links:[{label:'🔗 Case Study',url:'#',p:true},{label:'👁 Preview',url:'#',p:false}] },
+  { title:'Student Management Portal',   type:'Full Stack Dev',cls:'b-dev',emoji:'📊', bg:'linear-gradient(135deg,#0a2a1a,#0d4a2e,#082015)', short:'Full-stack app for 200+ students — real-time attendance via QR, grade book, assignments, and faculty analytics.', long:'Secured with JWT auth and role-based access. Socket.io for live notifications. Lazy loading and server-side pagination for concurrent load. Faculty dashboard shows attendance trends, grade distributions, and submission rates. Cut manual attendance time by ~80%.', tags:['React','Node.js','MongoDB','Socket.io','JWT Auth','Chart.js','Express'], links:[{label:'📁 GitHub',url:'https://github.com/yourusername',p:true},{label:'🚀 Live Demo',url:'#',p:false}] },
+  { title:'Sentiment Analysis Tool',     type:'ML / AI',       cls:'b-ml', emoji:'🤖', bg:'linear-gradient(135deg,#1a0a18,#3a1040,#1a0828)', short:'Fine-tuned BERT on 50k Amazon reviews — 91.4% accuracy with a live Streamlit UI and attention heatmaps.', long:'Trained using PyTorch with mixed-precision on a Colab T4 GPU. Interface shows real-time inference with confidence bar charts and an attention heatmap highlighting which words drove the prediction. Outperformed SVM, LSTM, and BiLSTM baselines by 4–9%. Inference time < 200ms.', tags:['Python','PyTorch','BERT','Hugging Face','Streamlit','scikit-learn','pandas'], links:[{label:'📁 GitHub',url:'https://github.com/yourusername',p:true},{label:'📄 Report',url:'#',p:false}] }
 ];
 
-/* ── MODAL ──────────────────────────────────── */
+/* ── MODAL ───────────────────────────────── */
 function openModal(p) {
   document.getElementById('m-badge').textContent = p.type;
   document.getElementById('m-badge').className   = 'badge ' + p.cls;
-  const th = document.getElementById('m-thumb');
-  th.style.background = p.bg; th.textContent = p.emoji;
+  const th = document.getElementById('m-thumb'); th.style.background = p.bg; th.textContent = p.emoji;
   document.getElementById('m-title').textContent = p.title;
   document.getElementById('m-short').textContent = p.short;
   document.getElementById('m-long').textContent  = p.long;
-  document.getElementById('m-tags').innerHTML    = p.tags.map(t => `<span class="mtag">${t}</span>`).join('');
+  document.getElementById('m-tags').innerHTML    = p.tags.map(t=>`<span class="mtag">${t}</span>`).join('');
   document.getElementById('m-links').innerHTML   = p.links.map(l => {
     const ext = l.url !== '#' && l.url.startsWith('http');
-    return `<a href="${l.url}" class="${l.p ? 'ml-p' : 'ml-s'}" ${ext ? 'target="_blank" rel="noopener"' : ''} onclick="guardLink(event,this,'${l.label}')">${l.label}</a>`;
+    return `<a href="${l.url}" class="${l.p?'ml-p':'ml-s'}" ${ext?'target="_blank" rel="noopener"':''} onclick="guardLink(event,this,'${l.label}')">${l.label}</a>`;
   }).join('');
   document.getElementById('mbd').classList.add('on');
   document.body.style.overflow = 'hidden';
   document.getElementById('m-close').focus();
 }
-function closeModal() {
-  document.getElementById('mbd').classList.remove('on');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
+function closeModal() { document.getElementById('mbd').classList.remove('on'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 document.getElementById('mbox').addEventListener('keydown', e => {
   if (e.key !== 'Tab') return;
   const f = [...document.getElementById('mbox').querySelectorAll('button,a,[tabindex]:not([tabindex="-1"])')];
   if (!f.length) return;
-  if (e.shiftKey) { if (document.activeElement === f[0]) { e.preventDefault(); f[f.length-1].focus(); }}
-  else            { if (document.activeElement === f[f.length-1]) { e.preventDefault(); f[0].focus(); }}
+  if (e.shiftKey) { if (document.activeElement===f[0]) { e.preventDefault(); f[f.length-1].focus(); }}
+  else            { if (document.activeElement===f[f.length-1]) { e.preventDefault(); f[0].focus(); }}
 });
-function guardLink(e, el, lbl) {
-  if (el.getAttribute('href') === '#') { e.preventDefault(); toast('🔗', `Set the ${lbl} URL in the PROJECTS array`); }
-}
+function guardLink(e, el, lbl) { if (el.getAttribute('href')==='#') { e.preventDefault(); toast('🔗', `Add the ${lbl} URL in the PROJECTS array`); }}
 
-/* ── PROJECT CARDS ──────────────────────────── */
+/* ── PROJECT CARDS ───────────────────────── */
 document.querySelectorAll('.pc').forEach(card => {
   const open = () => { const p = PROJECTS[+card.dataset.id]; if (p) openModal(p); };
   card.addEventListener('click', e => { if (e.target.closest('a,button[data-action]')) return; open(); });
-  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }});
+  card.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); open(); }});
   card.querySelectorAll('button[data-action]').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      toast('🔗', `Add your ${btn.textContent.trim()} URL in the PROJECTS array`);
-    });
+    btn.addEventListener('click', e => { e.stopPropagation(); toast('🔗', `Add your ${btn.textContent.trim()} URL in the PROJECTS array`); });
   });
 });
 
-/* ── CERT CARDS ─────────────────────────────── */
+/* ── CERT CARDS ──────────────────────────── */
 document.querySelectorAll('.cc').forEach(cc => {
-  const act = () => {
-    const link = cc.dataset.link;
-    if (link && link !== '#') window.open(link, '_blank', 'noopener');
-    else toast('🎓', 'Set data-link on this cert card to your credential URL');
-  };
+  const act = () => { const l = cc.dataset.link; if (l && l !== '#') window.open(l,'_blank','noopener'); else toast('🎓', 'Set data-link on this cert card to your credential URL'); };
   cc.addEventListener('click', act);
-  cc.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); }});
+  cc.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); act(); }});
 });
 
-/* ── SOCIAL LINK GUARDS ─────────────────────── */
+/* ── COPY EMAIL ──────────────────────────── */
+function copyEmail() {
+  const email = document.getElementById('email-text').textContent;
+  navigator.clipboard.writeText(email).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✅ Copied!';
+    toast('📋', `${email} copied to clipboard`);
+    setTimeout(() => btn.textContent = '📋 Copy email', 2000);
+  }).catch(() => toast('📧', `Email: ${email}`));
+}
+
+/* ── SOCIAL LINK GUARDS ──────────────────── */
 document.querySelectorAll('.soc').forEach(s => {
   const h = s.getAttribute('href') || '';
   if (h.includes('yourprofile') || h.includes('yourusername') || h.includes('youremail')) {
-    s.addEventListener('click', e => {
-      e.preventDefault();
-      const name = s.textContent.trim().split(' ').slice(1).join(' ');
-      toast('🔗', `Update your ${name} link in the Contact section`);
-    });
+    s.addEventListener('click', e => { e.preventDefault(); toast('🔗', `Update your ${s.textContent.trim().split(' ').slice(1).join(' ')} link`); });
   }
 });
 
-/* ── CONTACT FORM ───────────────────────────── */
+/* ── CONTACT FORM ────────────────────────── */
 document.getElementById('cf-form').addEventListener('submit', e => {
   e.preventDefault();
-  const name  = document.getElementById('cf-name').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  const msg   = document.getElementById('cf-msg').value.trim();
-  if (!name || !email || !msg) { toast('⚠️', 'Please fill in Name, Email, and Message'); return; }
+  const name = document.getElementById('cf-name').value.trim();
+  const email= document.getElementById('cf-email').value.trim();
+  const msg  = document.getElementById('cf-msg').value.trim();
+  if (!name||!email||!msg) { toast('⚠️', 'Please fill in Name, Email, and Message'); return; }
   if (!/^\S+@\S+\.\S+$/.test(email)) { toast('⚠️', 'Please enter a valid email address'); return; }
   const btn = document.getElementById('send-btn');
-  btn.textContent = 'Sending…'; btn.disabled = true;
-  /* TODO: replace this with a real Formspree fetch call */
+  btn.textContent='Sending…'; btn.disabled=true;
+  /* TODO: replace with: fetch('https://formspree.io/f/YOUR_ID', { method:'POST', body: new FormData(e.target) }) */
   setTimeout(() => {
-    btn.textContent = '✅ Sent!';
-    e.target.reset();
-    toast('✅', `Message sent, ${name}! I'll get back to you soon.`);
-    setTimeout(() => { btn.textContent = 'Send Message ✉️'; btn.disabled = false; }, 3000);
+    btn.textContent='✅ Sent!'; e.target.reset();
+    toast('✅', `Message sent, ${name}! I'll reply soon.`);
+    setTimeout(() => { btn.textContent='Send Message ✉️'; btn.disabled=false; }, 3000);
   }, 1400);
 });
 
-/* ── TOAST ──────────────────────────────────── */
-let toastTimer;
+/* ── TOAST ───────────────────────────────── */
+let ttimer;
 function toast(icon, msg) {
-  clearTimeout(toastTimer);
+  clearTimeout(ttimer);
   const t = document.getElementById('toast');
   t.textContent = `${icon}  ${msg}`;
   t.classList.add('on');
-  toastTimer = setTimeout(() => t.classList.remove('on'), 3500);
+  ttimer = setTimeout(() => t.classList.remove('on'), 3500);
 }
 
-/* ── KONAMI CODE EASTER EGG ─────────────────── */
-const KC = [38,38,40,40,37,39,37,39,66,65];
-let kci = 0;
+/* ── KONAMI CODE ─────────────────────────── */
+const KC=[38,38,40,40,37,39,37,39,66,65]; let kci=0;
 document.addEventListener('keydown', e => {
-  kci = (e.keyCode === KC[kci]) ? kci + 1 : 0;
-  if (kci === KC.length) {
-    document.getElementById('egg').classList.add('on');
-    kci = 0;
-  }
+  kci = (e.keyCode===KC[kci]) ? kci+1 : 0;
+  if (kci===KC.length) { document.getElementById('egg').classList.add('on'); kci=0; }
 });
-document.getElementById('egg').querySelector('.egg-close').addEventListener('click', () => {
-  document.getElementById('egg').classList.remove('on');
-  navTo('contact');
+document.getElementById('egg-close').addEventListener('click', () => {
+  document.getElementById('egg').classList.remove('on'); navTo('contact');
 });
-
-/* ── GITHUB STATS THEME FIX ─────────────────── */
-function updateGhTheme() {
-  const dark = document.documentElement.dataset.theme !== 'light';
-  document.querySelectorAll('.gh-stats img').forEach(img => {
-    img.src = img.src
-      .replace(/bg_color=[^&]*/,'bg_color=00000000')
-      .replace(/text_color=[^&]*/,'text_color=' + (dark ? '8B92B2' : '5A5F7A'));
-  });
-}
-document.getElementById('theme-btn').addEventListener('click', updateGhTheme);
 </script>
 </body>
 </html>

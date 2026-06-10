@@ -364,6 +364,51 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
 @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem}.av-wrap{max-width:240px;margin:0 auto}.gh-stats{grid-template-columns:1fr}}
 @media(max-width:768px){#nav{padding:0 1.25rem}.nav-links{display:none;position:fixed;top:var(--nav);left:0;right:0;flex-direction:column;align-items:flex-start;background:rgba(8,11,24,.97);backdrop-filter:blur(24px);padding:1.75rem 1.5rem;gap:1.35rem;border-bottom:1px solid var(--border);z-index:999}[data-theme="light"] .nav-links{background:rgba(245,245,252,.97)}.nav-links.open{display:flex}.nav-links a{font-size:1rem}.btn-resume{display:none}.burger{display:flex}.sec{padding:4rem 1.25rem}.cf-row{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.now-inner{flex-direction:column;align-items:flex-start;gap:1rem}#otw{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+
+/* ── GRAIN TEXTURE ──────────────────────── */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.022;pointer-events:none;z-index:9996;mix-blend-mode:overlay}
+[data-theme="light"] body::after{opacity:.04}
+
+/* ── ANIMATED NAME SHIMMER ──────────────── */
+.grad{background:linear-gradient(125deg,var(--text) 0%,var(--primary) 30%,var(--teal) 58%,var(--text) 100%);background-size:220% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:220% center}}
+
+/* ── FEATURED PROJECT CARD ──────────────── */
+.pc-featured{grid-column:1/-1;display:grid;grid-template-columns:1.1fr 1fr}
+.pc-featured .pc-thumb{aspect-ratio:auto;min-height:260px}
+.pc-featured .badge{font-size:.75rem;padding:.28rem .9rem}
+.pc-featured .pc-title{font-size:1.25rem}
+.pc-featured .pc-desc{font-size:.9rem}
+@media(max-width:700px){.pc-featured{grid-template-columns:1fr}.pc-featured .pc-thumb{min-height:180px}}
+
+/* ── SKILL PILL TOOLTIPS ────────────────── */
+.pill[data-tip]{position:relative}
+.pill[data-tip]::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border2);border-radius:7px;padding:.3rem .75rem;font-size:.68rem;white-space:nowrap;color:var(--muted);opacity:0;pointer-events:none;transition:opacity .2s ease;font-family:var(--fb);font-weight:400;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.pill[data-tip]::before{content:'';position:absolute;bottom:calc(100% + 2px);left:50%;transform:translateX(-50%);border:4px solid transparent;border-top-color:var(--border2);opacity:0;transition:opacity .2s ease;pointer-events:none}
+.pill[data-tip]:hover::after,.pill[data-tip]:hover::before{opacity:1}
+
+/* ── RESPONSE TIME BADGE ────────────────── */
+.reply-info{display:flex;align-items:center;justify-content:center;gap:1.25rem;margin-top:1.5rem;flex-wrap:wrap}
+.reply-badge{display:inline-flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:500;color:var(--teal);background:rgba(52,212,183,.08);border:1px solid rgba(52,212,183,.22);padding:.38rem .95rem;border-radius:100px}
+
+/* ── SHARE BUTTON ───────────────────────── */
+.share-btn{display:inline-flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:500;color:var(--muted);background:transparent;border:1px solid var(--border);border-radius:100px;padding:.38rem .95rem;transition:all .25s ease}
+.share-btn:hover{color:var(--primary);border-color:var(--primary);background:var(--pdim)}
+
+/* ── PRINT / RESUME ─────────────────────── */
+@media print{
+  #nav,#side-dots,#otw,#top-wrap,#prog,.scroll-hint,#now,#egg,#toast,#mbd,footer .fn{display:none!important}
+  body{background:#fff!important;color:#111!important;font-size:11pt}
+  body::after{display:none}
+  .sec{padding:1.5rem 0!important;page-break-inside:avoid}
+  .sec-title,.hero-title{color:#111!important;-webkit-text-fill-color:#111!important;background:none!important}
+  .grad{background:none!important;-webkit-text-fill-color:#6C5CE7!important}
+  .card,.sk-card,.pc,.cc,.tcard,.ach,.testi,.pstep{border:1px solid #ddd!important;background:#fff!important;box-shadow:none!important}
+  *{color:#444!important;border-color:#ddd!important}
+  .btn-p,.btn-o,.btn-send,.pb{display:none!important}
+  footer{border-top:1px solid #ddd!important;padding:.75rem 0!important}
+  .fc{color:#666!important}
+}
 </style>
 </head>
 <body>
@@ -523,13 +568,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
       <p class="sec-sub">Click any pill to highlight it. Built over 3 years of design and engineering.</p>
     </div>
     <div class="sk-grid">
-      <!-- TODO: add/remove skill pills -->
-      <div class="sk-card reveal d1"><div class="sk-icon" style="background:rgba(139,124,248,.13)">🎨</div><div class="sk-name">Design Tools</div><div class="pills"><span class="pill">Figma</span><span class="pill">Adobe XD</span><span class="pill">Illustrator</span><span class="pill">Photoshop</span><span class="pill">Framer</span></div></div>
-      <div class="sk-card reveal d2"><div class="sk-icon" style="background:rgba(52,212,183,.12)">💻</div><div class="sk-name">Languages</div><div class="pills"><span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">C / C++</span><span class="pill">Java</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">SQL</span></div></div>
-      <div class="sk-card reveal d3"><div class="sk-icon" style="background:rgba(249,112,102,.12)">⚡</div><div class="sk-name">Frameworks</div><div class="pills"><span class="pill">React.js</span><span class="pill">Node.js</span><span class="pill">Tailwind CSS</span><span class="pill">Express.js</span><span class="pill">Bootstrap</span></div></div>
-      <div class="sk-card reveal d1"><div class="sk-icon" style="background:rgba(255,200,80,.1)">🔧</div><div class="sk-name">Tools &amp; Platforms</div><div class="pills"><span class="pill">Git &amp; GitHub</span><span class="pill">VS Code</span><span class="pill">Postman</span><span class="pill">MongoDB</span><span class="pill">Firebase</span></div></div>
-      <div class="sk-card reveal d2"><div class="sk-icon" style="background:rgba(139,124,248,.13)">🧠</div><div class="sk-name">UX Skills</div><div class="pills"><span class="pill">Wireframing</span><span class="pill">Prototyping</span><span class="pill">User Research</span><span class="pill">Usability Testing</span><span class="pill">Design Systems</span></div></div>
-      <div class="sk-card reveal d3"><div class="sk-icon" style="background:rgba(52,212,183,.12)">📐</div><div class="sk-name">CS Fundamentals</div><div class="pills"><span class="pill">DSA</span><span class="pill">OOP</span><span class="pill">DBMS</span><span class="pill">OS</span><span class="pill">Computer Networks</span></div></div>
+      <div class="sk-card reveal d1"><div class="sk-icon" style="background:rgba(139,124,248,.13)">🎨</div><div class="sk-name">Design Tools</div><div class="pills"><span class="pill" data-tip="UI/UX — 2 yrs">Figma</span><span class="pill" data-tip="Prototyping">Adobe XD</span><span class="pill" data-tip="Vector art">Illustrator</span><span class="pill" data-tip="Image editing">Photoshop</span><span class="pill" data-tip="Web animations">Framer</span></div></div>
+      <div class="sk-card reveal d2"><div class="sk-icon" style="background:rgba(52,212,183,.12)">💻</div><div class="sk-name">Languages</div><div class="pills"><span class="pill" data-tip="ML & scripting — 2 yrs">Python</span><span class="pill" data-tip="Frontend & Node — 2 yrs">JavaScript</span><span class="pill" data-tip="DSA & systems">C / C++</span><span class="pill" data-tip="OOP & Android">Java</span><span class="pill" data-tip="Markup">HTML</span><span class="pill" data-tip="Styling">CSS</span><span class="pill" data-tip="Databases">SQL</span></div></div>
+      <div class="sk-card reveal d3"><div class="sk-icon" style="background:rgba(249,112,102,.12)">⚡</div><div class="sk-name">Frameworks</div><div class="pills"><span class="pill" data-tip="Frontend SPA">React.js</span><span class="pill" data-tip="Backend runtime">Node.js</span><span class="pill" data-tip="Utility CSS">Tailwind CSS</span><span class="pill" data-tip="REST APIs">Express.js</span><span class="pill" data-tip="Responsive UI">Bootstrap</span></div></div>
+      <div class="sk-card reveal d1"><div class="sk-icon" style="background:rgba(255,200,80,.1)">🔧</div><div class="sk-name">Tools &amp; Platforms</div><div class="pills"><span class="pill" data-tip="Version control">Git &amp; GitHub</span><span class="pill" data-tip="Code editor">VS Code</span><span class="pill" data-tip="API testing">Postman</span><span class="pill" data-tip="NoSQL DB">MongoDB</span><span class="pill" data-tip="Backend-as-service">Firebase</span></div></div>
+      <div class="sk-card reveal d2"><div class="sk-icon" style="background:rgba(139,124,248,.13)">🧠</div><div class="sk-name">UX Skills</div><div class="pills"><span class="pill" data-tip="Low-fi sketches">Wireframing</span><span class="pill" data-tip="Interactive mockups">Prototyping</span><span class="pill" data-tip="Interviews & surveys">User Research</span><span class="pill" data-tip="Task-based testing">Usability Testing</span><span class="pill" data-tip="Component libraries">Design Systems</span></div></div>
+      <div class="sk-card reveal d3"><div class="sk-icon" style="background:rgba(52,212,183,.12)">📐</div><div class="sk-name">CS Fundamentals</div><div class="pills"><span class="pill" data-tip="Algorithms & structures">DSA</span><span class="pill" data-tip="Design principles">OOP</span><span class="pill" data-tip="Relational databases">DBMS</span><span class="pill" data-tip="Processes & memory">OS</span><span class="pill" data-tip="TCP/IP, HTTP">Computer Networks</span></div></div>
     </div>
   </div>
 </section>
@@ -544,7 +588,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
     </div>
     <div class="proj-grid">
       <!-- TODO: replace with your real projects -->
-      <article class="pc reveal d1" data-id="0" tabindex="0" role="button" aria-label="E-Commerce Redesign">
+      <article class="pc pc-featured reveal" data-id="0" tabindex="0" role="button" aria-label="E-Commerce Redesign">
         <div class="pc-thumb"><div class="pc-emo" style="background:linear-gradient(135deg,#170d3c,#2d1b6e,#1a0a3c)">🛍️</div><div class="pc-overlay"></div><span class="badge b-ux">UI/UX Design</span></div>
         <div class="pc-body">
           <div class="pc-title">E-Commerce App Redesign</div>
@@ -689,6 +733,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
         <a href="https://behance.net/yourprofile"     class="soc" target="_blank" rel="noopener">🎨 Behance</a>
         <a href="https://dribbble.com/yourprofile"    class="soc" target="_blank" rel="noopener">🏀 Dribbble</a>
       </div>
+      <div class="reply-info reveal d4">
+        <span class="reply-badge">⚡ Typically replies within 24 hours</span>
+        <button class="share-btn" onclick="sharePortfolio()">🔗 Share Portfolio</button>
+      </div>
     </div>
   </div>
 </section>
@@ -740,7 +788,13 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 /* ── THEME ───────────────────────────────── */
 const html   = document.documentElement;
 const thBtn  = document.getElementById('theme-btn');
-(function(){ const s = localStorage.getItem('theme') || 'dark'; html.dataset.theme = s; thBtn.textContent = s==='dark'?'🌙':'☀️'; })();
+(function(){
+  const saved  = localStorage.getItem('theme');
+  const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  const theme  = saved || system;   /* respect saved; fall back to OS preference */
+  html.dataset.theme = theme;
+  thBtn.textContent  = theme === 'dark' ? '🌙' : '☀️';
+})();
 function toggleTheme() {
   const n = html.dataset.theme === 'dark' ? 'light' : 'dark';
   html.dataset.theme = n; thBtn.textContent = n==='dark'?'🌙':'☀️';
@@ -763,6 +817,26 @@ const ROLES = ['UI/UX Designer','CSE Student','Frontend Developer','Problem Solv
 let ri=0, ci=0, del=false;
 const tEl = document.getElementById('typed');
 (function type(){ const c=ROLES[ri]; tEl.textContent=del?c.slice(0,ci-1):c.slice(0,ci+1); del?ci--:ci++; let d=del?55:95; if(!del&&ci===c.length){d=2200;del=true} else if(del&&ci===0){del=false;ri=(ri+1)%ROLES.length;d=350} setTimeout(type,d); })();
+
+/* ── PARALLAX HERO ───────────────────────── */
+const heroWrap = document.querySelector('.hero-wrap');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y < window.innerHeight * 1.2 && heroWrap) {
+    heroWrap.style.transform = `translateY(${y * 0.22}px)`;
+    heroWrap.style.opacity   = 1 - (y / (window.innerHeight * 0.85));
+  }
+}, { passive: true });
+
+/* ── SHARE PORTFOLIO ─────────────────────── */
+function sharePortfolio() {
+  const url = window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: document.title, url }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(url).then(() => toast('🔗', 'Portfolio link copied to clipboard!')).catch(() => toast('🔗', url));
+  }
+}
 
 /* ── PROGRESS + BACK-TO-TOP RING ─────────── */
 const prog    = document.getElementById('prog');

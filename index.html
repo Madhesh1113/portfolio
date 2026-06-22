@@ -408,6 +408,15 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   footer{border-top:1px solid #ddd!important;padding:.75rem 0!important}
   .fc{color:#666!important}
 }
+/* ── DESIGN GALLERY ──────────────────────── */
+#gallery{background:var(--surface)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
+.ig-wrap{border-radius:var(--rl);overflow:hidden;display:flex;justify-content:center;transition:transform .3s ease}
+.ig-wrap:hover{transform:translateY(-4px)}
+.ig-wrap .instagram-media{margin:0 auto !important;min-width:0 !important;max-width:100% !important;width:100% !important;border-radius:var(--r) !important}
+.gallery-cta{text-align:center;margin-top:2.5rem}
+@media(max-width:900px){.gallery-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.gallery-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -425,6 +434,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <button class="sd" data-target="process"       data-label="Process"      onclick="navTo('process')"></button>
   <button class="sd" data-target="skills"        data-label="Skills"       onclick="navTo('skills')"></button>
   <button class="sd" data-target="projects"      data-label="Projects"     onclick="navTo('projects')"></button>
+  <button class="sd" data-target="gallery"       data-label="Gallery"      onclick="navTo('gallery')"></button>
   <button class="sd" data-target="certifications" data-label="Certs"       onclick="navTo('certifications')"></button>
   <button class="sd" data-target="education"     data-label="Education"    onclick="navTo('education')"></button>
   <button class="sd" data-target="testimonials"  data-label="Reviews"      onclick="navTo('testimonials')"></button>
@@ -453,6 +463,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <li><a href="#process"        onclick="navTo('process',event)">Process</a></li>
     <li><a href="#skills"         onclick="navTo('skills',event)">Skills</a></li>
     <li><a href="#projects"       onclick="navTo('projects',event)">Projects</a></li>
+    <li><a href="#gallery"        onclick="navTo('gallery',event)">Gallery</a></li>
     <li><a href="#certifications" onclick="navTo('certifications',event)">Certs</a></li>
     <li><a href="#education"      onclick="navTo('education',event)">Education</a></li>
     <li><a href="#testimonials"   onclick="navTo('testimonials',event)">Reviews</a></li>
@@ -611,6 +622,49 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DESIGN GALLERY ══════════════════════ -->
+<section id="gallery" class="sec" aria-labelledby="gallery-h">
+  <div class="wrap">
+    <div class="sec-hdr reveal">
+      <div class="eyebrow">Creative Work</div>
+      <h2 class="sec-title" id="gallery-h">Design Gallery</h2>
+      <p class="sec-sub">A selection of poster and graphic designs from my Instagram page <a href="https://www.instagram.com/designby.miracles" target="_blank" rel="noopener" style="color:var(--primary);text-decoration:none">@designby.miracles</a></p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <div class="ig-wrap reveal d1">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DZ2Ku0MktCR/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:12px;margin:0;max-width:100%;width:100%">
+        </blockquote>
+      </div>
+
+      <div class="ig-wrap reveal d2">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DX4DZ45ksC0/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:12px;margin:0;max-width:100%;width:100%">
+        </blockquote>
+      </div>
+
+      <div class="ig-wrap reveal d3">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/DYfIU0gSBxZ/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:12px;margin:0;max-width:100%;width:100%">
+        </blockquote>
+      </div>
+
+    </div>
+
+    <div class="gallery-cta reveal">
+      <a href="https://www.instagram.com/designby.miracles" target="_blank" rel="noopener" class="btn-o">📸 See More on Instagram</a>
     </div>
   </div>
 </section>
@@ -1031,5 +1085,7 @@ document.getElementById('egg-close').addEventListener('click', () => {
   document.getElementById('egg').classList.remove('on'); navTo('contact');
 });
 </script>
+<!-- Instagram embed script -->
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>

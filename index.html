@@ -485,11 +485,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* ── STAT COUNT-UP POP ───────────────────── */
 @keyframes statPop{0%{transform:scale(1)}50%{transform:scale(1.35)}100%{transform:scale(1)}}
 
-/* ── GALLERY HOVER OVERLAY ───────────────── */
-.ig-wrap{position:relative}
-.ig-wrap::after{content:'📸  View on Instagram →';position:absolute;inset:0;background:rgba(8,11,24,.65);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:600;font-family:var(--fb);opacity:0;transition:opacity .3s ease;border-radius:var(--rl);backdrop-filter:blur(4px);pointer-events:none;letter-spacing:.02em}
-.ig-wrap:hover::after{opacity:1}
-
 /* ── FOOTER ANIMATED GRADIENT LINE ──────── */
 footer{border-top:none;position:relative}
 footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--teal),var(--coral),var(--primary));background-size:200% auto;animation:footLine 4s linear infinite}
@@ -509,12 +504,25 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
 .ld-prog.on{opacity:1}
 .ld-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--teal),var(--coral));border-radius:2px;transition:width 2.8s cubic-bezier(.4,0,.2,1)}
 
+/* ── SECTION HEADER CASCADE ANIMATIONS ────── */
+/* Triggered by .reveal.in on parent — no JS needed, works on all deployments */
+.sec-hdr .eyebrow{opacity:0;transform:translateX(-14px);transition:opacity .5s ease 0s,transform .5s ease 0s}
+.sec-hdr.reveal.in .eyebrow{opacity:1;transform:translateX(0)}
+.sec-hdr .sec-title{opacity:0;transform:translateY(20px);transition:opacity .75s ease .12s,transform .75s ease .12s}
+.sec-hdr.reveal.in .sec-title{opacity:1;transform:translateY(0)}
+.sec-hdr .sec-sub{opacity:0;transform:translateY(12px);transition:opacity .65s ease .28s,transform .65s ease .28s}
+.sec-hdr.reveal.in .sec-sub{opacity:1;transform:translateY(0)}
+
 /* ── DESIGN GALLERY ──────────────────────── */
 #gallery{background:var(--surface)}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
-.ig-wrap{border-radius:var(--rl);overflow:hidden;display:flex;justify-content:center;transition:transform .3s ease}
-.ig-wrap:hover{transform:translateY(-4px)}
-.ig-wrap .instagram-media{margin:0 auto !important;min-width:0 !important;max-width:100% !important;width:100% !important;border-radius:var(--r) !important}
+/* ig-box: clips Instagram UI, shows only the poster image */
+.ig-box{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:var(--rl);background:var(--card);border:1px solid var(--border);transition:transform .3s ease,box-shadow .3s ease}
+.ig-box:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+.ig-box iframe{position:absolute;top:-54px;left:0;width:100%;height:calc(100% + 120px);border:none;pointer-events:none}
+.ig-box-link{position:absolute;inset:0;z-index:5}
+.ig-box::after{content:'📸 View on Instagram →';position:absolute;inset:0;background:rgba(8,11,24,.65);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:600;font-family:var(--fb);opacity:0;transition:opacity .3s ease;border-radius:var(--rl);backdrop-filter:blur(4px);pointer-events:none;letter-spacing:.02em;z-index:4}
+.ig-box:hover::after{opacity:1}
 .gallery-cta{text-align:center;margin-top:2.5rem}
 @media(max-width:900px){.gallery-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.gallery-grid{grid-template-columns:1fr}}
@@ -770,28 +778,19 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
 
     <div class="gallery-grid">
 
-      <div class="ig-wrap reveal d1">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DZ2Ku0MktCR/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:12px;margin:0;max-width:100%;width:100%">
-        </blockquote>
+      <div class="ig-box reveal d1">
+        <a href="https://www.instagram.com/p/DZ2Ku0MktCR/" target="_blank" rel="noopener" class="ig-box-link" aria-label="View post on Instagram"></a>
+        <iframe src="https://www.instagram.com/p/DZ2Ku0MktCR/embed/" scrolling="no" frameborder="0" allowtransparency="true" loading="lazy" title="Instagram design post 1"></iframe>
       </div>
 
-      <div class="ig-wrap reveal d2">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DX4DZ45ksC0/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:12px;margin:0;max-width:100%;width:100%">
-        </blockquote>
+      <div class="ig-box reveal d2">
+        <a href="https://www.instagram.com/p/DX4DZ45ksC0/" target="_blank" rel="noopener" class="ig-box-link" aria-label="View post on Instagram"></a>
+        <iframe src="https://www.instagram.com/p/DX4DZ45ksC0/embed/" scrolling="no" frameborder="0" allowtransparency="true" loading="lazy" title="Instagram design post 2"></iframe>
       </div>
 
-      <div class="ig-wrap reveal d3">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DYfIU0gSBxZ/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:12px;margin:0;max-width:100%;width:100%">
-        </blockquote>
+      <div class="ig-box reveal d3">
+        <a href="https://www.instagram.com/reel/DYfIU0gSBxZ/" target="_blank" rel="noopener" class="ig-box-link" aria-label="View reel on Instagram"></a>
+        <iframe src="https://www.instagram.com/reel/DYfIU0gSBxZ/embed/" scrolling="no" frameborder="0" allowtransparency="true" loading="lazy" title="Instagram design reel"></iframe>
       </div>
 
     </div>
@@ -964,42 +963,42 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
   const txtEl   = document.getElementById('ld-txt');
   const prog    = document.getElementById('ld-prog');
   const fill    = document.getElementById('ld-fill');
-  let mi = 0;
 
-  /* 0.9s — type middle letters: R → Ra → Rak … → Rakshana D */
+  /* 0.9s — smoothly expand "akshana " between R and D */
   setTimeout(() => {
-    const t = setInterval(() => {
-      midEl.textContent = MIDDLE.slice(0, ++mi);
-      if (mi >= MIDDLE.length) {
-        clearInterval(t);
+    midEl.textContent = 'akshana ';
+    midEl.style.cssText = 'display:inline-block;white-space:nowrap;overflow:hidden;max-width:0;vertical-align:bottom;transition:max-width 0.9s cubic-bezier(0.34,1.04,0.64,1)';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      midEl.style.maxWidth = '700px'; /* animate to full width smoothly */
+    }));
 
-        /* Name complete (~1.5s) — show divider and tagline */
-        divEl.classList.add('on');
-        tagEl.classList.add('on');
+    /* After expansion completes (900ms) — show divider + tagline */
+    setTimeout(() => {
+      divEl.classList.add('on');
+      tagEl.classList.add('on');
 
-        /* Type tagline at 48ms/char */
-        let ci = 0;
-        const t2 = setInterval(() => {
-          txtEl.textContent = TAGLINE.slice(0, ++ci);
-          if (ci >= TAGLINE.length) {
-            clearInterval(t2);
-            /* ✅ Tagline fully typed — wait 1.25s then fade out */
-            setTimeout(() => {
-              ldEl.classList.add('out');
-              document.body.style.overflow = '';
-            }, 1250);
-          }
-        }, 48);
+      /* Type tagline at 48ms/char */
+      let ci = 0;
+      const t2 = setInterval(() => {
+        txtEl.textContent = TAGLINE.slice(0, ++ci);
+        if (ci >= TAGLINE.length) {
+          clearInterval(t2);
+          /* Tagline done — wait 1.25s then fade out */
+          setTimeout(() => {
+            ldEl.classList.add('out');
+            document.body.style.overflow = '';
+          }, 1250);
+        }
+      }, 48);
 
-        /* Show progress bar 350ms after name completes */
-        setTimeout(() => {
-          prog.classList.add('on');
-          requestAnimationFrame(() => requestAnimationFrame(() => {
-            fill.style.width = '100%';
-          }));
-        }, 350);
-      }
-    }, 75);
+      /* Show progress bar 350ms after name completes */
+      setTimeout(() => {
+        prog.classList.add('on');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          fill.style.width = '100%';
+        }));
+      }, 350);
+    }, 920);
   }, 900);
 })();
 
@@ -1527,7 +1526,6 @@ document.querySelectorAll('.cc').forEach(card => {
   });
 });
 </script>
-<!-- Instagram embed script -->
-<script async src="https://www.instagram.com/embed.js"></script>
+
 </body>
 </html>

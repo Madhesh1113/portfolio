@@ -1330,17 +1330,27 @@ document.getElementById('egg-close').addEventListener('click', () => {
 ═══════════════════════════════════════════ */
 
 /* ── 1. SECTION HEADING TEXT REVEAL ──────── */
-/* Each section title wipes in from left as it enters view */
+/* Uses threshold:0 + triggers reveal on scroll AND after loader finishes */
 if (!reducedMotion) {
   document.querySelectorAll('section .sec-title').forEach(title => {
-    title.style.clipPath  = 'inset(0 100% 0 0)';
+    title.style.clipPath   = 'inset(0 100% 0 0)';
     title.style.transition = 'clip-path 0.9s cubic-bezier(0.4,0,0.2,1) 0.15s';
-    new IntersectionObserver(entries => {
+    const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) title.style.clipPath = 'inset(0 0% 0 0)';
+        if (e.isIntersecting) {
+          title.style.clipPath = 'inset(0 0% 0 0)';
+          io.disconnect();
+        }
       });
-    }, { threshold: 0.25 }).observe(title);
+    }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
+    io.observe(title);
   });
+  /* Fallback: once loader is fully gone (~5s), reveal any still-hidden titles */
+  setTimeout(() => {
+    document.querySelectorAll('section .sec-title').forEach(t => {
+      t.style.clipPath = 'inset(0 0% 0 0)';
+    });
+  }, 5200);
 }
 
 /* ── 2. MAGNETIC BUTTONS ─────────────────── */

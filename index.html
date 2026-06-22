@@ -408,6 +408,12 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   footer{border-top:1px solid #ddd!important;padding:.75rem 0!important}
   .fc{color:#666!important}
 }
+/* ── ANIMATION EXTRAS ───────────────────── */
+@keyframes rippleOut{to{transform:scale(4);opacity:0}}
+.btn-p,.btn-o{position:relative;overflow:hidden}
+.sec-title{will-change:clip-path}
+.eyebrow{overflow:hidden}
+
 /* ── DESIGN GALLERY ──────────────────────── */
 #gallery{background:var(--surface)}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
@@ -437,7 +443,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <button class="sd" data-target="gallery"       data-label="Gallery"      onclick="navTo('gallery')"></button>
   <button class="sd" data-target="certifications" data-label="Certs"       onclick="navTo('certifications')"></button>
   <button class="sd" data-target="education"     data-label="Education"    onclick="navTo('education')"></button>
-  <button class="sd" data-target="testimonials"  data-label="Reviews"      onclick="navTo('testimonials')"></button>
   <button class="sd" data-target="contact"       data-label="Contact"      onclick="navTo('contact')"></button>
 </nav>
 
@@ -466,14 +471,12 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <li><a href="#gallery"        onclick="navTo('gallery',event)">Gallery</a></li>
     <li><a href="#certifications" onclick="navTo('certifications',event)">Certs</a></li>
     <li><a href="#education"      onclick="navTo('education',event)">Education</a></li>
-    <li><a href="#testimonials"   onclick="navTo('testimonials',event)">Reviews</a></li>
     <li><a href="#contact"        onclick="navTo('contact',event)">Contact</a></li>
   </ul>
 
   <div class="nav-right">
     <button class="btn-theme" id="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
-    <!-- TODO: set href="resume.pdf" when you have the file ready -->
-    <a href="#" class="btn-resume" onclick="handleResume(event)">Resume ↓</a>
+    <a href="resume.pdf" class="btn-resume" download="Rakshana_D_Resume.pdf">Resume ↓</a>
   </div>
 
   <button class="burger" id="burger" onclick="toggleNav()" aria-label="Toggle menu" aria-expanded="false">
@@ -491,10 +494,10 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="hero-badge"><span class="bdot"></span>Available for internships · Trichy, Tamil Nadu</div>
     <h1 class="hero-title">Hi, I'm<br><span class="grad">Rakshana D</span></h1>
     <p class="hero-role">I'm a <span class="typed" id="typed"></span><span class="cur"></span></p>
-    <p class="hero-desc">Creative and detail-oriented CSE student passionate about UI/UX Design and Digital Creativity — crafting beautiful interfaces and branding experiences with Canva, Figma, HTML &amp; CSS.</p>
+    <p class="hero-desc">Turning ideas into beautiful, user-first designs.</p>
     <div class="hero-btns">
       <button class="btn-p" onclick="navTo('projects')">View My Work ↓</button>
-      <a href="#" class="btn-o" onclick="handleResume(event)">Download CV</a>
+      <a href="resume.pdf" class="btn-o" download="Rakshana_D_Resume.pdf">Download CV</a>
     </div>
   </div>
 
@@ -527,7 +530,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <p class="reveal d2">Skilled in Canva and Figma, I design posters, branding materials, social media creatives, and user-friendly interfaces. I'm eager to gain industry experience, contribute to real-world projects, and continuously grow my design and development skills.</p>
         <div class="stats">
           <div class="stat reveal d1"><div class="stat-n" data-target="2" data-suffix="nd">0</div><div class="stat-l">Year CSE</div></div>
-          <div class="stat reveal d2"><div class="stat-n" data-target="2" data-suffix="+">0</div><div class="stat-l">Projects</div></div>
+          <div class="stat reveal d2"><div class="stat-n" data-target="3" data-suffix="+">0</div><div class="stat-l">Projects</div></div>
           <div class="stat reveal d3"><div class="stat-n" data-target="1" data-suffix="+">0</div><div class="stat-l">Yr Design</div></div>
         </div>
         <div class="chips reveal d3">
@@ -569,13 +572,37 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <h2 class="sec-title" id="skills-h">Skills &amp; Technologies</h2>
       <p class="sec-sub">Click any pill to highlight it. Built over 3 years of design and engineering.</p>
     </div>
-    <div class="sk-grid">
-      <div class="sk-card reveal d1"><div class="sk-icon" style="background:rgba(139,124,248,.13)">🎨</div><div class="sk-name">Design Tools</div><div class="pills"><span class="pill" data-tip="Primary design tool">Canva</span><span class="pill" data-tip="UI/UX prototyping">Figma</span></div></div>
-      <div class="sk-card reveal d2"><div class="sk-icon" style="background:rgba(52,212,183,.12)">💻</div><div class="sk-name">Front-End Development</div><div class="pills"><span class="pill" data-tip="Web structure">HTML</span><span class="pill" data-tip="Web styling">CSS</span></div></div>
-      <div class="sk-card reveal d3"><div class="sk-icon" style="background:rgba(249,112,102,.12)">✦</div><div class="sk-name">Design Skills</div><div class="pills"><span class="pill" data-tip="Interface design">UI Design</span><span class="pill" data-tip="User experience">UX Design</span><span class="pill" data-tip="Visual communication">Graphic Design</span><span class="pill" data-tip="Visual identity">Branding</span></div></div>
-      <div class="sk-card reveal d1"><div class="sk-icon" style="background:rgba(255,200,80,.1)">🖼️</div><div class="sk-name">Creative Skills</div><div class="pills"><span class="pill" data-tip="Promotional design">Poster Design</span><span class="pill" data-tip="Social content">Social Media Creatives</span><span class="pill" data-tip="Brand visuals">Branding Materials</span><span class="pill" data-tip="Visual balance">Color Theory</span><span class="pill" data-tip="Layout structure">Visual Hierarchy</span></div></div>
-      <div class="sk-card reveal d2"><div class="sk-icon" style="background:rgba(139,124,248,.13)">🧠</div><div class="sk-name">UX Skills</div><div class="pills"><span class="pill" data-tip="Low-fi sketches">Wireframing</span><span class="pill" data-tip="Interactive mockups">Prototyping</span><span class="pill" data-tip="High-fidelity screens">Hi-Fi Mockups</span><span class="pill" data-tip="User-focused design">User-Centered Design</span></div></div>
-      <div class="sk-card reveal d3"><div class="sk-icon" style="background:rgba(52,212,183,.12)">⚡</div><div class="sk-name">Other Skills</div><div class="pills"><span class="pill" data-tip="AI prompt crafting">Prompt Engineering</span></div></div>
+    <div class="sk-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+      <div class="sk-card reveal d1">
+        <div class="sk-icon" style="background:rgba(139,124,248,.13)">🎨</div>
+        <div class="sk-name">Design Tools</div>
+        <div class="pills">
+          <span class="pill" data-tip="Primary design tool — posters, branding, creatives">Canva</span>
+          <span class="pill" data-tip="UI/UX design & prototyping">Figma</span>
+        </div>
+      </div>
+      <div class="sk-card reveal d2">
+        <div class="sk-icon" style="background:rgba(249,112,102,.12)">✦</div>
+        <div class="sk-name">Design Skills</div>
+        <div class="pills">
+          <span class="pill" data-tip="Interface design">UI Design</span>
+          <span class="pill" data-tip="User experience">UX Design</span>
+          <span class="pill" data-tip="Visual communication">Graphic Design</span>
+          <span class="pill" data-tip="Visual identity">Branding</span>
+          <span class="pill" data-tip="Layout & attention">Visual Hierarchy</span>
+          <span class="pill" data-tip="Palette & mood">Color Theory</span>
+          <span class="pill" data-tip="Low to hi-fi screens">Wireframing & Prototyping</span>
+          <span class="pill" data-tip="AI prompt crafting">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="sk-card reveal d3">
+        <div class="sk-icon" style="background:rgba(52,212,183,.12)">💻</div>
+        <div class="sk-name">Front-End Development</div>
+        <div class="pills">
+          <span class="pill" data-tip="Web structure & markup">HTML</span>
+          <span class="pill" data-tip="Styling & layouts">CSS</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -596,7 +623,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
           <div class="pc-title">Watch Brand Portfolio</div>
           <div class="pc-desc">Designed a modern watch brand portfolio focusing on user-centered design, interactive navigation, and high-fidelity mockups — applying UI/UX best practices throughout.</div>
           <div class="pc-tags"><span class="ptag">Figma</span><span class="ptag">UI Design</span><span class="ptag">UX Design</span><span class="ptag">Prototyping</span></div>
-          <div class="pc-btns"><button class="pb" data-action="preview">👁 Preview</button></div>
+          <div class="pc-btns">
+            <button class="pb" data-action="preview">👁 Preview</button>
+          </div>
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
@@ -611,14 +640,14 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
-      <!-- Project 3: Placeholder for next project -->
-      <article class="pc reveal d3" data-id="2" tabindex="0" role="button" aria-label="Coming soon">
-        <div class="pc-thumb"><div class="pc-emo" style="background:linear-gradient(135deg,#0d1a1a,#0a2a2a,#0d2020)">🚀</div><div class="pc-overlay"></div><span class="badge b-dev">Coming Soon</span></div>
+      <!-- Project 3: Ticket Booking Website -->
+      <article class="pc reveal d3" data-id="2" tabindex="0" role="button" aria-label="Ticket Booking Website">
+        <div class="pc-thumb"><div class="pc-emo" style="background:linear-gradient(135deg,#0a1a2e,#0d3055,#0a2040)">🎫</div><div class="pc-overlay"></div><span class="badge b-dev">Front-End</span></div>
         <div class="pc-body">
-          <div class="pc-title">Next Project</div>
-          <div class="pc-desc">Currently working on something new. Stay tuned — more design and development projects coming soon to this portfolio.</div>
-          <div class="pc-tags"><span class="ptag">In Progress</span></div>
-          <div class="pc-btns"><button class="pb" data-action="wip">🔔 Notify Me</button></div>
+          <div class="pc-title">Ticket Booking Website</div>
+          <div class="pc-desc">Designed and developed a responsive tourist ticket booking website focused on intuitive navigation, user-friendly layouts, and responsive design principles.</div>
+          <div class="pc-tags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">Responsive Design</span><span class="ptag">UX</span></div>
+          <div class="pc-btns"><button class="pb" data-action="preview">👁 Preview</button></div>
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
@@ -684,46 +713,16 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
 </section>
 
-<!-- ═══════ EDUCATION + ACHIEVEMENTS ════════════ -->
+<!-- ═══════ EDUCATION ════════════════════════════ -->
 <section id="education" class="sec" aria-labelledby="edu-h">
   <div class="wrap">
     <div class="sec-hdr reveal">
       <div class="eyebrow">My Background</div>
-      <h2 class="sec-title" id="edu-h">Education &amp; Achievements</h2>
+      <h2 class="sec-title" id="edu-h">Education</h2>
     </div>
-    <div class="edu-grid">
-      <div>
-        <div class="tl reveal">
-          <div class="ti"><div class="tdot"></div><div class="tcard"><div class="t-yr">📅 2023 – 2027</div><div class="t-school">Mohamed Institute of Education and Technology, Trichy</div><div class="t-deg">B.E. Computer Science &amp; Engineering · Affiliated to Anna University</div></div></div>
-          <div class="ti"><div class="tdot"></div><div class="tcard"><div class="t-yr">📅 2021 – 2023</div><div class="t-school">St. Antony's Higher Secondary School, Kattur, Trichy</div><div class="t-deg">Higher Secondary Education (12th Grade)</div><span class="t-grade">📊 Percentage: 57.8%</span></div></div>
-        </div>
-      </div>
-      <div>
-        <!-- TODO: replace with your real achievements -->
-        <div class="ach-grid">
-          <div class="ach reveal d1"><div class="ach-icon">🏆</div><div><div class="ach-title">1st Place — Designathon 2024</div><div class="ach-sub">UI/UX track · 200+ participants · [College Name]</div></div></div>
-          <div class="ach reveal d2"><div class="ach-icon">💡</div><div><div class="ach-title">Smart India Hackathon — Finalist</div><div class="ach-sub">National-level · Team of 6 · Problem statement: [PS ID]</div></div></div>
-          <div class="ach reveal d3"><div class="ach-icon">📝</div><div><div class="ach-title">Paper Presentation — [Conference Name]</div><div class="ach-sub">Published research on [topic] · [Year]</div></div></div>
-          <div class="ach reveal d4"><div class="ach-icon">🎖️</div><div><div class="ach-title">Dean's List — [Semester] 2024</div><div class="ach-sub">Top 5% of department · [College Name]</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ TESTIMONIALS ══════════════════════════ -->
-<section id="testimonials" class="sec" aria-labelledby="testi-h">
-  <div class="wrap">
-    <div class="sec-hdr reveal">
-      <div class="eyebrow">Kind Words</div>
-      <h2 class="sec-title" id="testi-h">What People Say</h2>
-      <p class="sec-sub">Feedback from professors, collaborators, and project teammates.</p>
-    </div>
-    <div class="testi-grid">
-      <!-- TODO: replace with real quotes — ask professors or teammates for 2 sentences -->
-      <div class="testi reveal d1"><div class="testi-text">"[Your Name]'s ability to translate complex user research into clean, intuitive interfaces is exceptional for a student at this stage. Their work on [project] demonstrated real product thinking, not just visual design skills."</div><div class="testi-author"><div class="testi-avatar">PK</div><div><div class="testi-name">Prof. [Name]</div><div class="testi-role">UI/UX Design Course, [College]</div></div></div></div>
-      <div class="testi reveal d2"><div class="testi-text">"Working with [Your Name] on our hackathon project was a great experience. They owned the entire design and frontend, iterated fast under pressure, and delivered something we were all proud to demo."</div><div class="testi-author"><div class="testi-avatar">RS</div><div><div class="testi-name">[Teammate Name]</div><div class="testi-role">Hackathon Collaborator, [College]</div></div></div></div>
-      <div class="testi reveal d3"><div class="testi-text">"I reviewed [Your Name]'s code during our open-source sprint — clean structure, meaningful variable names, well-documented. Exactly the habits that make a developer a joy to work with."</div><div class="testi-author"><div class="testi-avatar">AM</div><div><div class="testi-name">[Mentor Name]</div><div class="testi-role">Project Mentor / Code Reviewer</div></div></div></div>
+    <div class="tl reveal" style="max-width:640px">
+      <div class="ti"><div class="tdot"></div><div class="tcard"><div class="t-yr">📅 2023 – 2027</div><div class="t-school">Mohamed Institute of Education and Technology, Trichy</div><div class="t-deg">B.E. Computer Science &amp; Engineering · Affiliated to Anna University</div></div></div>
+      <div class="ti"><div class="tdot"></div><div class="tcard"><div class="t-yr">📅 2021 – 2023</div><div class="t-school">St. Antony's Higher Secondary School, Kattur, Trichy</div><div class="t-deg">Higher Secondary Education (12th Grade)</div><span class="t-grade">📊 Percentage: 57.8%</span></div></div>
     </div>
   </div>
 </section>
@@ -751,14 +750,22 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <p class="sec-sub">Internship, freelance, collaboration, or just a conversation — I'm always open.</p>
       </div>
       <div class="cf reveal d1">
-        <!-- TODO: add action="https://formspree.io/f/YOUR_ID" method="POST" for real email delivery -->
-        <form id="cf-form" novalidate>
+        <!--
+          FORMSPREE SETUP (free, 5 min):
+          1. Go to https://formspree.io → Sign up free
+          2. Create a new form → copy your Form ID
+          3. Replace YOUR_FORM_ID below with your actual ID
+          4. Done — submissions land in rakshanadesiakumar@gmail.com
+        -->
+        <form id="cf-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <input type="hidden" name="_replyto" value="rakshanadesiakumar@gmail.com">
+          <input type="hidden" name="_subject" value="New message from portfolio">
           <div class="cf-row">
-            <div class="fg"><label for="cf-name">Your Name</label><input id="cf-name" type="text" placeholder="Rahul Sharma" required></div>
-            <div class="fg"><label for="cf-email">Email Address</label><input id="cf-email" type="email" placeholder="rahul@gmail.com" required></div>
+            <div class="fg"><label for="cf-name">Your Name</label><input id="cf-name" name="name" type="text" placeholder="Rahul Sharma" required></div>
+            <div class="fg"><label for="cf-email">Email Address</label><input id="cf-email" name="email" type="email" placeholder="rahul@gmail.com" required></div>
           </div>
-          <div class="fg"><label for="cf-sub">Subject</label><input id="cf-sub" type="text" placeholder="Internship opportunity / Project collab"></div>
-          <div class="fg"><label for="cf-msg">Message</label><textarea id="cf-msg" placeholder="Tell me about your project or how I can help..." required></textarea></div>
+          <div class="fg"><label for="cf-sub">Subject</label><input id="cf-sub" name="subject" type="text" placeholder="Internship opportunity / Project collab"></div>
+          <div class="fg"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" placeholder="Tell me about your project or how I can help..." required></textarea></div>
           <button type="submit" class="btn-send" id="send-btn">Send Message ✉️</button>
         </form>
       </div>
@@ -766,11 +773,15 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <span class="email-chip" id="email-text">rakshanadesiakumar@gmail.com</span>
         <button class="copy-btn" onclick="copyEmail()" id="copy-btn">📋 Copy email</button>
       </div>
+      <div class="email-row reveal d2" style="margin-top:.6rem">
+        <span class="email-chip">📞 +91 9043729280</span>
+        <button class="copy-btn" onclick="copyPhone()">📋 Copy number</button>
+      </div>
       <div class="socials reveal d3">
-        <a href="https://www.linkedin.com/in/rakshana-desiakumar-0545643a3" class="soc" target="_blank" rel="noopener">💼 LinkedIn</a>
-        <a href="https://github.com/rakshana1105"                           class="soc" target="_blank" rel="noopener">🐙 GitHub</a>
-        <a href="mailto:rakshanadesiakumar@gmail.com"                       class="soc">📧 Email</a>
         <a href="https://www.instagram.com/designby.miracles"               class="soc" target="_blank" rel="noopener">📸 Instagram</a>
+        <a href="https://www.linkedin.com/in/rakshana-desiakumar-0545643a3" class="soc" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a href="mailto:rakshanadesiakumar@gmail.com"                       class="soc">📧 Email</a>
+        <a href="https://github.com/rakshana1105"                           class="soc" target="_blank" rel="noopener">🐙 GitHub</a>
       </div>
       <div class="reply-info reveal d4">
         <span class="reply-badge">⚡ Typically replies within 24 hours</span>
@@ -980,7 +991,7 @@ document.querySelectorAll('.pill').forEach(p => {
 const PROJECTS = [
   { title:'Watch Brand Portfolio', type:'UI/UX Design', cls:'b-ux', emoji:'⌚', bg:'linear-gradient(135deg,#170d3c,#2d1b6e,#1a0a3c)', short:'A modern watch brand portfolio designed with a focus on user-centered design, interactive navigation, and high-fidelity mockups.', long:'Designed using Figma, this project focused on creating user-friendly layouts with consistent visual language across all screens. I applied UI/UX best practices to improve usability and visual consistency — including interactive navigation flows, clean typography, and a cohesive high-fidelity prototype that communicates the brand identity clearly.', tags:['Figma','UI Design','UX Design','Prototyping','Hi-Fi Mockups','User-Centered Design'], links:[{label:'👁 Preview',url:'#',p:true}] },
   { title:'Advertisement Banner', type:'Graphic Design', cls:'b-open', emoji:'🎨', bg:'linear-gradient(135deg,#1a0a2a,#3d1f6e,#0d1a3a)', short:'An eye-catching promotional banner designed for a home baking business using Canva — incorporating branding, color theory, and visual hierarchy.', long:'This project involved designing a marketing-focused promotional banner for a home baking business. I incorporated key branding elements to reflect the business identity, applied color theory to make the design visually appealing, and used visual hierarchy principles to guide the viewer\'s attention. The result is a professional banner that improves customer engagement and communicates the brand\'s warmth and quality.', tags:['Canva','Graphic Design','Branding','Color Theory','Visual Hierarchy','Marketing Design'], links:[{label:'👁 Preview',url:'#',p:true}] },
-  { title:'Next Project', type:'Coming Soon', cls:'b-dev', emoji:'🚀', bg:'linear-gradient(135deg,#0d1a1a,#0a2a2a,#0d2020)', short:'Currently working on something exciting. More projects coming soon!', long:'Stay tuned for more design and development work. I\'m always exploring new ideas, learning new tools, and working on creative projects. Check back soon or follow on Instagram @designby.miracles for sneak peeks.', tags:['In Progress'], links:[] }
+  { title:'Ticket Booking Website', type:'Front-End Dev', cls:'b-dev', emoji:'🎫', bg:'linear-gradient(135deg,#0a1a2e,#0d3055,#0a2040)', short:'A responsive tourist ticket booking website built with HTML and CSS — focused on intuitive navigation and user-friendly layouts.', long:'Designed and developed a fully responsive ticket booking website for tourists. The project focused on applying responsive design principles to ensure a seamless experience across devices. Key decisions included a clear booking flow, accessible layout structure, and clean visual design that guides the user from browsing to completing a booking without friction.', tags:['HTML','CSS','Responsive Design','UX Design','User-Friendly Layouts'], links:[{label:'👁 Preview',url:'#',p:true}] }
 ];
 
 /* ── MODAL ───────────────────────────────── */
@@ -1038,6 +1049,12 @@ function copyEmail() {
     setTimeout(() => btn.textContent = '📋 Copy email', 2000);
   }).catch(() => toast('📧', `Email: ${email}`));
 }
+function copyPhone() {
+  const phone = '+91 9043729280';
+  navigator.clipboard.writeText(phone).then(() => {
+    toast('📋', `${phone} copied to clipboard`);
+  }).catch(() => toast('📞', `Phone: ${phone}`));
+}
 
 /* ── SOCIAL LINK GUARDS ──────────────────── */
 document.querySelectorAll('.soc').forEach(s => {
@@ -1048,21 +1065,38 @@ document.querySelectorAll('.soc').forEach(s => {
 });
 
 /* ── CONTACT FORM ────────────────────────── */
-document.getElementById('cf-form').addEventListener('submit', e => {
+document.getElementById('cf-form').addEventListener('submit', async e => {
   e.preventDefault();
-  const name = document.getElementById('cf-name').value.trim();
-  const email= document.getElementById('cf-email').value.trim();
-  const msg  = document.getElementById('cf-msg').value.trim();
+  const name  = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const msg   = document.getElementById('cf-msg').value.trim();
   if (!name||!email||!msg) { toast('⚠️', 'Please fill in Name, Email, and Message'); return; }
   if (!/^\S+@\S+\.\S+$/.test(email)) { toast('⚠️', 'Please enter a valid email address'); return; }
   const btn = document.getElementById('send-btn');
-  btn.textContent='Sending…'; btn.disabled=true;
-  /* TODO: replace with: fetch('https://formspree.io/f/YOUR_ID', { method:'POST', body: new FormData(e.target) }) */
-  setTimeout(() => {
-    btn.textContent='✅ Sent!'; e.target.reset();
-    toast('✅', `Message sent, ${name}! I'll reply soon.`);
-    setTimeout(() => { btn.textContent='Send Message ✉️'; btn.disabled=false; }, 3000);
-  }, 1400);
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  const action = e.target.action;
+  if (action.includes('YOUR_FORM_ID')) {
+    /* Formspree ID not set yet — simulate */
+    setTimeout(() => {
+      btn.textContent = '✅ Sent!'; e.target.reset();
+      toast('✅', `Thanks ${name}! Set up Formspree to receive real emails.`);
+      setTimeout(() => { btn.textContent = 'Send Message ✉️'; btn.disabled = false; }, 3000);
+    }, 1000);
+    return;
+  }
+  try {
+    const res = await fetch(action, { method:'POST', body: new FormData(e.target), headers:{ Accept:'application/json' } });
+    if (res.ok) {
+      btn.textContent = '✅ Sent!'; e.target.reset();
+      toast('✅', `Message sent, ${name}! I'll reply soon.`);
+    } else {
+      throw new Error();
+    }
+  } catch {
+    toast('⚠️', 'Something went wrong — email rakshanadesiakumar@gmail.com directly');
+    btn.textContent = 'Send Message ✉️';
+  }
+  setTimeout(() => { btn.textContent = 'Send Message ✉️'; btn.disabled = false; }, 3500);
 });
 
 /* ── TOAST ───────────────────────────────── */
@@ -1084,6 +1118,157 @@ document.addEventListener('keydown', e => {
 document.getElementById('egg-close').addEventListener('click', () => {
   document.getElementById('egg').classList.remove('on'); navTo('contact');
 });
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── 1. SECTION HEADING TEXT REVEAL ──────── */
+/* Each section title wipes in from left as it enters view */
+if (!reducedMotion) {
+  document.querySelectorAll('section .sec-title').forEach(title => {
+    title.style.clipPath  = 'inset(0 100% 0 0)';
+    title.style.transition = 'clip-path 0.9s cubic-bezier(0.4,0,0.2,1) 0.15s';
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) title.style.clipPath = 'inset(0 0% 0 0)';
+      });
+    }, { threshold: 0.25 }).observe(title);
+  });
+}
+
+/* ── 2. MAGNETIC BUTTONS ─────────────────── */
+/* Buttons gently pull toward cursor on hover */
+document.querySelectorAll('.btn-p, .btn-o, .btn-resume').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const r  = btn.getBoundingClientRect();
+    const x  = (e.clientX - r.left  - r.width  / 2) * 0.28;
+    const y  = (e.clientY - r.top   - r.height / 2) * 0.28;
+    btn.style.transform  = `translate(${x}px, ${y}px)`;
+    btn.style.transition = 'transform 0.12s ease';
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform  = '';
+    btn.style.transition = 'transform 0.55s cubic-bezier(0.23,1,0.32,1)';
+    setTimeout(() => { btn.style.transition = ''; }, 560);
+  });
+});
+
+/* ── 3. BUTTON RIPPLE ON CLICK ───────────── */
+/* A circular ripple expands from the click point */
+document.querySelectorAll('.btn-p, .btn-o').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const r    = btn.getBoundingClientRect();
+    const size = Math.max(r.width, r.height) * 2.2;
+    const x    = e.clientX - r.left  - size / 2;
+    const y    = e.clientY - r.top   - size / 2;
+    const ring = document.createElement('span');
+    ring.style.cssText = `
+      position:absolute;border-radius:50%;
+      background:rgba(255,255,255,0.22);
+      width:${size}px;height:${size}px;
+      left:${x}px;top:${y}px;
+      transform:scale(0);pointer-events:none;
+      animation:rippleOut 0.65s ease-out forwards`;
+    btn.appendChild(ring);
+    setTimeout(() => ring.remove(), 680);
+  });
+});
+
+/* ── 4. CURSOR SPARKLE TRAIL ─────────────── */
+/* Coloured sparkle dots follow the cursor — skips touch devices */
+(function () {
+  if (reducedMotion || window.matchMedia('(hover:none)').matches) return;
+
+  const cv  = document.createElement('canvas');
+  cv.id     = 'sparkle-canvas';
+  cv.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9995;';
+  document.body.appendChild(cv);
+  const ctx = cv.getContext('2d');
+
+  function resize() { cv.width = innerWidth; cv.height = innerHeight; }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  const COLORS = ['139,124,248', '52,212,183', '249,112,102'];
+  const pts    = [];
+
+  document.addEventListener('mousemove', e => {
+    for (let i = 0; i < 3; i++) {
+      pts.push({
+        x:   e.clientX + (Math.random() - 0.5) * 16,
+        y:   e.clientY + (Math.random() - 0.5) * 16,
+        r:   Math.random() * 3.2 + 1,
+        life:1,
+        vx:  (Math.random() - 0.5) * 1.8,
+        vy:  -(Math.random() * 2.4 + 0.5),
+        col: COLORS[Math.floor(Math.random() * COLORS.length)]
+      });
+    }
+  }, { passive: true });
+
+  (function draw() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    for (let i = pts.length - 1; i >= 0; i--) {
+      const p = pts[i];
+      p.x   += p.vx;
+      p.y   += p.vy;
+      p.vy  += 0.065;   /* gravity */
+      p.life -= 0.038;
+      p.r   *= 0.97;
+      if (p.life <= 0 || p.r < 0.3) { pts.splice(i, 1); continue; }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.col},${(p.life * 0.85).toFixed(2)})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
+
+/* ── 5. HERO FLOATING PARTICLES ──────────── */
+/* 55 slow-drifting dots in the hero background */
+(function () {
+  if (reducedMotion) return;
+  const home = document.getElementById('home');
+  if (!home) return;
+
+  const cv  = document.createElement('canvas');
+  cv.id     = 'hero-canvas';
+  cv.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.45;';
+  home.appendChild(cv);
+  const ctx = cv.getContext('2d');
+
+  function resize() { cv.width = home.offsetWidth; cv.height = home.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  const COLS = ['139,124,248', '52,212,183', '249,112,102'];
+  const dots = Array.from({ length: 55 }, () => ({
+    x:   Math.random() * cv.width,
+    y:   Math.random() * cv.height,
+    r:   Math.random() * 2.2 + 0.5,
+    vx:  (Math.random() - 0.5) * 0.35,
+    vy:  (Math.random() - 0.5) * 0.35,
+    op:  Math.random() * 0.5 + 0.15,
+    col: COLS[Math.floor(Math.random() * COLS.length)]
+  }));
+
+  (function draw() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    dots.forEach(d => {
+      d.x += d.vx; d.y += d.vy;
+      if (d.x < 0) d.x = cv.width;   if (d.x > cv.width)  d.x = 0;
+      if (d.y < 0) d.y = cv.height;  if (d.y > cv.height) d.y = 0;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${d.col},${d.op})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  })();
+})();
 </script>
 <!-- Instagram embed script -->
 <script async src="https://www.instagram.com/embed.js"></script>

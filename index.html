@@ -469,14 +469,18 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* ── NAME LETTER POP ─────────────────────── */
 @keyframes letterPop{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── PROCESS GLOWING DOT ─────────────────── */
-.process-dot{position:absolute;top:calc(2.1rem - 4px);width:10px;height:10px;border-radius:50%;z-index:2;animation:dotTravel 3.5s ease-in-out infinite}
-@keyframes dotTravel{
-  0%  {left:calc(12.5% + 18px);background:var(--primary);box-shadow:0 0 10px var(--primary),0 0 22px rgba(139,124,248,.5)}
-  50% {left:50%;background:var(--teal);box-shadow:0 0 10px var(--teal),0 0 22px rgba(52,212,183,.5)}
-  100%{left:calc(87.5% - 18px);background:var(--coral);box-shadow:0 0 10px var(--coral),0 0 22px rgba(249,112,102,.5)}
+/* ── PROCESS CARD GLOW SEQUENCE ─────────── */
+.pstep{transition:all .5s ease}
+.pstep-active{
+  border-color:var(--primary);
+  box-shadow:0 0 0 1px var(--primary),0 0 32px rgba(139,124,248,.35),0 12px 40px rgba(0,0,0,.35);
+  transform:translateY(-7px);
 }
-@media(max-width:1000px){.process-dot{display:none}}
+.pstep-active .pstep-num{
+  box-shadow:0 0 18px rgba(139,124,248,.7);
+  animation:pulse 1.5s ease-in-out infinite;
+}
+.pstep-active .pstep-title{color:var(--primary)}
 
 /* ── STAT COUNT-UP POP ───────────────────── */
 @keyframes statPop{0%{transform:scale(1)}50%{transform:scale(1.35)}100%{transform:scale(1)}}
@@ -656,7 +660,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
       <p class="sec-sub">Every project follows a structured approach that keeps users at the centre of every decision.</p>
     </div>
     <div class="process-grid">
-      <div class="process-dot" aria-hidden="true"></div>
       <div class="pstep reveal d1"><div class="pstep-num">01</div><div class="pstep-icon">🔍</div><div class="pstep-title">Discover</div><div class="pstep-desc">User interviews, competitor analysis, and research to understand the problem space and the people we're designing for.</div></div>
       <div class="pstep reveal d2"><div class="pstep-num">02</div><div class="pstep-icon">🎯</div><div class="pstep-title">Define</div><div class="pstep-desc">Synthesise findings into clear problem statements, user personas, and measurable success criteria before touching Figma.</div></div>
       <div class="pstep reveal d3"><div class="pstep-num">03</div><div class="pstep-icon">✏️</div><div class="pstep-title">Design</div><div class="pstep-desc">Rapid wireframes → hi-fi mockups → interactive prototypes, with multiple iterations driven by feedback and data.</div></div>
@@ -1330,28 +1333,8 @@ document.getElementById('egg-close').addEventListener('click', () => {
 ═══════════════════════════════════════════ */
 
 /* ── 1. SECTION HEADING TEXT REVEAL ──────── */
-/* Uses threshold:0 + triggers reveal on scroll AND after loader finishes */
-if (!reducedMotion) {
-  document.querySelectorAll('section .sec-title').forEach(title => {
-    title.style.clipPath   = 'inset(0 100% 0 0)';
-    title.style.transition = 'clip-path 0.9s cubic-bezier(0.4,0,0.2,1) 0.15s';
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          title.style.clipPath = 'inset(0 0% 0 0)';
-          io.disconnect();
-        }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
-    io.observe(title);
-  });
-  /* Fallback: once loader is fully gone (~5s), reveal any still-hidden titles */
-  setTimeout(() => {
-    document.querySelectorAll('section .sec-title').forEach(t => {
-      t.style.clipPath = 'inset(0 0% 0 0)';
-    });
-  }, 5200);
-}
+/* Handled by .sec-hdr.reveal.in scroll system — clip-path approach
+   removed as it conflicts with the loading screen on deployed sites */
 
 /* ── 2. MAGNETIC BUTTONS ─────────────────── */
 /* Buttons gently pull toward cursor on hover */
@@ -1490,6 +1473,42 @@ document.querySelectorAll('.btn-p, .btn-o').forEach(btn => {
 document.querySelectorAll('section.sec').forEach((sec, i) => {
   sec.dataset.num = String(i + 1).padStart(2, '0');
 });
+
+/* ── 6b. PROCESS CARD GLOW SEQUENCE ─────── */
+/* Cards 1→2→3→4 glow in turn then loop — each active 1.8s */
+(function(){
+  const steps = document.querySelectorAll('.pstep');
+  if (!steps.length) return;
+  let active = 0;
+  const COLORS = [
+    {b:'var(--primary)', g:'rgba(139,124,248,.35)', n:'rgba(139,124,248,.7)',  t:'var(--primary)'},
+    {b:'var(--teal)',    g:'rgba(52,212,183,.3)',   n:'rgba(52,212,183,.65)',  t:'var(--teal)'   },
+    {b:'var(--coral)',   g:'rgba(249,112,102,.3)',  n:'rgba(249,112,102,.65)', t:'var(--coral)'  },
+    {b:'var(--primary)', g:'rgba(139,124,248,.35)', n:'rgba(139,124,248,.7)',  t:'var(--primary)'}
+  ];
+  function activate(idx) {
+    steps.forEach((s, i) => {
+      if (i === idx) {
+        const c = COLORS[i];
+        s.style.borderColor = c.b;
+        s.style.boxShadow   = `0 0 0 1px ${c.b},0 0 32px ${c.g},0 12px 40px rgba(0,0,0,.35)`;
+        s.style.transform   = 'translateY(-7px)';
+        const num = s.querySelector('.pstep-num');
+        if (num) num.style.boxShadow = `0 0 18px ${c.n}`;
+        const tt = s.querySelector('.pstep-title');
+        if (tt) tt.style.color = c.t;
+      } else {
+        s.style.borderColor = ''; s.style.boxShadow = ''; s.style.transform = '';
+        const num = s.querySelector('.pstep-num');
+        if (num) num.style.boxShadow = '';
+        const tt = s.querySelector('.pstep-title');
+        if (tt) tt.style.color = '';
+      }
+    });
+  }
+  activate(0);
+  setInterval(() => { active = (active + 1) % steps.length; activate(active); }, 1800);
+})();
 
 /* ── 7. CERT CARD 3D TILT ────────────────── */
 /* Consistent 3D tilt matching project cards */

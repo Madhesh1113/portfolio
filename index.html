@@ -454,6 +454,57 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* ── CERT CARD TILT ──────────────────────── */
 .cc{transform-style:preserve-3d;will-change:transform}
 
+/* ── COLOR-SHIFTING HERO ORBS ────────────── */
+.o1{animation:fl1 14s ease-in-out infinite,hueShift1 9s ease-in-out infinite}
+.o2{animation:fl2 17s ease-in-out infinite,hueShift2 11s ease-in-out infinite}
+@keyframes hueShift1{0%,100%{filter:blur(90px) hue-rotate(0deg)}50%{filter:blur(90px) hue-rotate(55deg)}}
+@keyframes hueShift2{0%,100%{filter:blur(90px) hue-rotate(0deg)}50%{filter:blur(90px) hue-rotate(-55deg)}}
+
+/* ── THUMBNAIL SWEEP REVEAL ──────────────── */
+.pc-thumb{overflow:hidden;position:relative}
+.pc-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.2) 50%,transparent 100%);transform:translateX(-100%);pointer-events:none;z-index:2}
+.pc.in .pc-thumb::after{animation:sweep .9s cubic-bezier(.4,0,.2,1) .2s forwards}
+@keyframes sweep{from{transform:translateX(-100%)}to{transform:translateX(150%)}}
+
+/* ── NAME LETTER POP ─────────────────────── */
+@keyframes letterPop{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── PROCESS GLOWING DOT ─────────────────── */
+.process-dot{position:absolute;top:calc(2.1rem - 4px);width:10px;height:10px;border-radius:50%;z-index:2;animation:dotTravel 3.5s ease-in-out infinite}
+@keyframes dotTravel{
+  0%  {left:calc(12.5% + 18px);background:var(--primary);box-shadow:0 0 10px var(--primary),0 0 22px rgba(139,124,248,.5)}
+  50% {left:50%;background:var(--teal);box-shadow:0 0 10px var(--teal),0 0 22px rgba(52,212,183,.5)}
+  100%{left:calc(87.5% - 18px);background:var(--coral);box-shadow:0 0 10px var(--coral),0 0 22px rgba(249,112,102,.5)}
+}
+@media(max-width:1000px){.process-dot{display:none}}
+
+/* ── STAT COUNT-UP POP ───────────────────── */
+@keyframes statPop{0%{transform:scale(1)}50%{transform:scale(1.35)}100%{transform:scale(1)}}
+
+/* ── GALLERY HOVER OVERLAY ───────────────── */
+.ig-wrap{position:relative}
+.ig-wrap::after{content:'📸  View on Instagram →';position:absolute;inset:0;background:rgba(8,11,24,.65);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:600;font-family:var(--fb);opacity:0;transition:opacity .3s ease;border-radius:var(--rl);backdrop-filter:blur(4px);pointer-events:none;letter-spacing:.02em}
+.ig-wrap:hover::after{opacity:1}
+
+/* ── FOOTER ANIMATED GRADIENT LINE ──────── */
+footer{border-top:none;position:relative}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--teal),var(--coral),var(--primary));background-size:200% auto;animation:footLine 4s linear infinite}
+@keyframes footLine{0%{background-position:0% center}100%{background-position:200% center}}
+
+/* ── LOADING SCREEN ──────────────────────── */
+#loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.4rem;transition:opacity .6s ease,visibility .6s ease}
+#loader.out{opacity:0;visibility:hidden;pointer-events:none}
+.ld-name{font-family:var(--fd);font-size:5rem;font-weight:700;letter-spacing:-.04em;line-height:1;background:linear-gradient(135deg,var(--primary),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:ldpop .55s cubic-bezier(.34,1.56,.64,1) .25s both}
+@keyframes ldpop{from{opacity:0;transform:scale(.72)}to{opacity:1;transform:scale(1)}}
+.ld-divider{width:0;height:2px;background:linear-gradient(90deg,var(--primary),var(--teal));border-radius:2px;opacity:0;transition:width .5s cubic-bezier(.4,0,.2,1),opacity .3s ease}
+.ld-divider.on{width:60px;opacity:1}
+.ld-tag{font-family:var(--fm);font-size:.82rem;color:var(--muted);letter-spacing:.045em;min-height:1.4em;text-align:center;opacity:0;transition:opacity .4s ease}
+.ld-tag.on{opacity:1}
+.ld-blink{display:inline-block;width:2px;height:.85em;background:var(--primary);margin-left:1px;vertical-align:middle;animation:blink 1s step-end infinite}
+.ld-prog{width:200px;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;opacity:0;transition:opacity .3s ease}
+.ld-prog.on{opacity:1}
+.ld-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--teal),var(--coral));border-radius:2px;transition:width 2.8s cubic-bezier(.4,0,.2,1)}
+
 /* ── DESIGN GALLERY ──────────────────────── */
 #gallery{background:var(--surface)}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
@@ -466,6 +517,15 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 </style>
 </head>
 <body>
+
+<!-- LOADING SCREEN -->
+<div id="loader" role="status" aria-label="Loading portfolio">
+  <!-- "RD" shown first, then "akshana " typed between R and D -->
+  <div class="ld-name">R<span id="ld-mid"></span>D</div>
+  <div class="ld-divider" id="ld-divider"></div>
+  <div class="ld-tag" id="ld-tag"><span id="ld-txt"></span><span class="ld-blink"></span></div>
+  <div class="ld-prog" id="ld-prog"><div class="ld-fill" id="ld-fill"></div></div>
+</div>
 
 <!-- PROGRESS BAR -->
 <div id="prog" aria-hidden="true"></div>
@@ -596,6 +656,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <p class="sec-sub">Every project follows a structured approach that keeps users at the centre of every decision.</p>
     </div>
     <div class="process-grid">
+      <div class="process-dot" aria-hidden="true"></div>
       <div class="pstep reveal d1"><div class="pstep-num">01</div><div class="pstep-icon">🔍</div><div class="pstep-title">Discover</div><div class="pstep-desc">User interviews, competitor analysis, and research to understand the problem space and the people we're designing for.</div></div>
       <div class="pstep reveal d2"><div class="pstep-num">02</div><div class="pstep-icon">🎯</div><div class="pstep-title">Define</div><div class="pstep-desc">Synthesise findings into clear problem statements, user personas, and measurable success criteria before touching Figma.</div></div>
       <div class="pstep reveal d3"><div class="pstep-num">03</div><div class="pstep-icon">✏️</div><div class="pstep-title">Design</div><div class="pstep-desc">Rapid wireframes → hi-fi mockups → interactive prototypes, with multiple iterations driven by feedback and data.</div></div>
@@ -871,6 +932,74 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
      JAVASCRIPT
 ═══════════════════════════════════════════ -->
 <script>
+/* ── REDUCED MOTION (declared first — used throughout) ── */
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── LOADING SCREEN ──────────────────────── */
+/*
+  Timeline:
+  0.25s  — "RD" pops in (CSS ldpop animation)
+  0.90s  — "akshana " types between R and D (75ms/char × 8 = 600ms)
+  1.50s  — name complete → divider expands + tagline fades in + typing starts
+  1.85s  — progress bar appears and begins filling
+  ~3.40s — tagline finishes typing ("Turning ideas into beautiful experiences" = 40 chars × 48ms)
+  1.25s  — pause so visitor reads the full tagline
+  ~4.65s — loader fades out, portfolio revealed
+*/
+(function(){
+  const ldEl  = document.getElementById('loader');
+  if (!ldEl) return;
+  if (reducedMotion) { ldEl.classList.add('out'); return; }
+
+  document.body.style.overflow = 'hidden';
+
+  const MIDDLE  = 'akshana ';
+  const TAGLINE = 'Turning ideas into beautiful experiences';
+  const midEl   = document.getElementById('ld-mid');
+  const divEl   = document.getElementById('ld-divider');
+  const tagEl   = document.getElementById('ld-tag');
+  const txtEl   = document.getElementById('ld-txt');
+  const prog    = document.getElementById('ld-prog');
+  const fill    = document.getElementById('ld-fill');
+  let mi = 0;
+
+  /* 0.9s — type middle letters: R → Ra → Rak … → Rakshana D */
+  setTimeout(() => {
+    const t = setInterval(() => {
+      midEl.textContent = MIDDLE.slice(0, ++mi);
+      if (mi >= MIDDLE.length) {
+        clearInterval(t);
+
+        /* Name complete (~1.5s) — show divider and tagline */
+        divEl.classList.add('on');
+        tagEl.classList.add('on');
+
+        /* Type tagline at 48ms/char */
+        let ci = 0;
+        const t2 = setInterval(() => {
+          txtEl.textContent = TAGLINE.slice(0, ++ci);
+          if (ci >= TAGLINE.length) {
+            clearInterval(t2);
+            /* ✅ Tagline fully typed — wait 1.25s then fade out */
+            setTimeout(() => {
+              ldEl.classList.add('out');
+              document.body.style.overflow = '';
+            }, 1250);
+          }
+        }, 48);
+
+        /* Show progress bar 350ms after name completes */
+        setTimeout(() => {
+          prog.classList.add('on');
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            fill.style.width = '100%';
+          }));
+        }, 350);
+      }
+    }, 75);
+  }, 900);
+})();
+
 /* ── YEAR ────────────────────────────────── */
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -900,11 +1029,45 @@ function navTo(id, e) {
   closeNav();
 }
 
-/* ── TYPEWRITER ──────────────────────────── */
+/* ── TYPEWRITER + CURSOR COLOUR MATCH ────── */
 const ROLES = ['UI/UX Designer','Graphic Designer','CSE Student','Creative Thinker','Brand Designer'];
+const ROLE_COLORS = ['var(--primary)','var(--teal)','var(--coral)','var(--primary)','var(--teal)'];
 let ri=0, ci=0, del=false;
-const tEl = document.getElementById('typed');
-(function type(){ const c=ROLES[ri]; tEl.textContent=del?c.slice(0,ci-1):c.slice(0,ci+1); del?ci--:ci++; let d=del?55:95; if(!del&&ci===c.length){d=2200;del=true} else if(del&&ci===0){del=false;ri=(ri+1)%ROLES.length;d=350} setTimeout(type,d); })();
+const tEl   = document.getElementById('typed');
+const curEl = document.querySelector('.cur');
+(function type(){
+  const c = ROLES[ri];
+  tEl.textContent = del ? c.slice(0,ci-1) : c.slice(0,ci+1);
+  del ? ci-- : ci++;
+  let d = del ? 55 : 95;
+  if (!del && ci === c.length) { d = 2200; del = true; }
+  else if (del && ci === 0) {
+    del = false; ri = (ri+1) % ROLES.length;
+    const col = ROLE_COLORS[ri];
+    if (curEl) curEl.style.background = col;
+    if (tEl)   tEl.style.color        = col;
+    d = 350;
+  }
+  setTimeout(type, d);
+})();
+
+/* ── NAME LETTER ANIMATION ───────────────── */
+(function(){
+  const nameEl = document.querySelector('.hero-title .grad');
+  if (!nameEl || reducedMotion) return;
+  /* remove gradient from parent — will apply per letter */
+  nameEl.style.cssText = 'background:none;-webkit-text-fill-color:inherit';
+  const letters = [...nameEl.textContent];
+  nameEl.innerHTML = letters.map((ch, i) =>
+    `<span style="display:inline-block;` +
+    `background:linear-gradient(125deg,var(--text) 0%,var(--primary) 55%,var(--teal) 100%);` +
+    `background-size:220% auto;` +
+    `-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;` +
+    `animation:letterPop .55s cubic-bezier(.34,1.56,.64,1) ${(.55+i*.07).toFixed(2)}s both,` +
+    `shimmer 5s linear ${(i*.12).toFixed(2)}s infinite"` +
+    `>${ch===' '?'&nbsp;':ch}</span>`
+  ).join('');
+})();
 
 /* ── PARALLAX HERO ───────────────────────── */
 const heroWrap = document.querySelector('.hero-wrap');
@@ -994,7 +1157,10 @@ document.querySelectorAll('.stat-n[data-target]').forEach(el => {
       const t = setInterval(() => {
         cur = Math.min(cur + step, target);
         el.textContent = Math.floor(cur) + suffix;
-        if (cur >= target) clearInterval(t);
+        if (cur >= target) {
+          clearInterval(t);
+          el.style.animation = 'statPop .45s cubic-bezier(.34,1.56,.64,1) forwards';
+        }
       }, 35);
       e.target.unobserve && e.target.unobserve(el);
     });
@@ -1162,7 +1328,6 @@ document.getElementById('egg-close').addEventListener('click', () => {
 /* ═══════════════════════════════════════════
    ANIMATIONS
 ═══════════════════════════════════════════ */
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ── 1. SECTION HEADING TEXT REVEAL ──────── */
 /* Each section title wipes in from left as it enters view */

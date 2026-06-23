@@ -172,9 +172,6 @@ ul{list-style:none}
 .chips{display:flex;flex-wrap:wrap;gap:.42rem;margin-top:.5rem}
 .chip{padding:.3rem .82rem;border:1px solid var(--border);border-radius:100px;font-size:.78rem;color:var(--muted);transition:all .25s ease}
 .chip:hover{border-color:var(--teal);color:var(--teal);background:var(--tdim)}
-.gh-stats{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1.75rem}
-.gh-stats img{border-radius:var(--r);width:100%;border:1px solid var(--border)}
-
 /* ── PROCESS ─────────────────────────────────── */
 #process{background:var(--surface)}
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative}
@@ -360,7 +357,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.75
 /* ── RESPONSIVE ──────────────────────────────── */
 @media(max-width:960px){.hero-desc{max-width:100%}.hero-btns{justify-content:center}}
 @media(max-width:1000px){.process-grid{grid-template-columns:repeat(2,1fr)}.process-grid::before{display:none}.edu-grid{grid-template-columns:1fr}}
-@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem}.av-wrap{max-width:240px;margin:0 auto}.gh-stats{grid-template-columns:1fr}}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:3rem}.av-wrap{max-width:240px;margin:0 auto}}
 @media(max-width:768px){#nav{padding:0 1.25rem}.nav-links{display:none;position:fixed;top:var(--nav);left:0;right:0;flex-direction:column;align-items:flex-start;background:rgba(8,11,24,.97);backdrop-filter:blur(24px);padding:1.75rem 1.5rem;gap:1.35rem;border-bottom:1px solid var(--border);z-index:999}[data-theme="light"] .nav-links{background:rgba(245,245,252,.97)}.nav-links.open{display:flex}.nav-links a{font-size:1rem}.btn-resume{display:none}.burger{display:flex}.sec{padding:4rem 1.25rem}.cf-row{grid-template-columns:1fr}footer{flex-direction:column;text-align:center}.now-inner{flex-direction:column;align-items:flex-start;gap:1rem}#otw{display:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}}
 
@@ -408,6 +405,16 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   footer{border-top:1px solid #ddd!important;padding:.75rem 0!important}
   .fc{color:#666!important}
 }
+/* ── FOCUS BLUR SPOTLIGHT EFFECT ────────── */
+.blur-out{
+  opacity:.42 !important;
+  filter:blur(2.5px) !important;
+  transform:scale(0.97) !important;
+  transition:opacity .3s ease,filter .3s ease,transform .3s ease !important;
+}
+/* ensure project cards transition opacity+filter (they don't use 'all') */
+.pc{transition:opacity .3s ease,filter .3s ease,border-color .35s ease,box-shadow .35s ease}
+
 /* ── ANIMATION EXTRAS ───────────────────── */
 @keyframes rippleOut{to{transform:scale(4);opacity:0}}
 .btn-p,.btn-o{position:relative;overflow:hidden}
@@ -503,15 +510,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
 .ld-prog{width:200px;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;opacity:0;transition:opacity .3s ease}
 .ld-prog.on{opacity:1}
 .ld-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--teal),var(--coral));border-radius:2px;transition:width 2.8s cubic-bezier(.4,0,.2,1)}
-
-/* ── SECTION HEADER CASCADE ANIMATIONS ────── */
-/* Triggered by .reveal.in on parent — no JS needed, works on all deployments */
-.sec-hdr .eyebrow{opacity:0;transform:translateX(-14px);transition:opacity .5s ease 0s,transform .5s ease 0s}
-.sec-hdr.reveal.in .eyebrow{opacity:1;transform:translateX(0)}
-.sec-hdr .sec-title{opacity:0;transform:translateY(20px);transition:opacity .75s ease .12s,transform .75s ease .12s}
-.sec-hdr.reveal.in .sec-title{opacity:1;transform:translateY(0)}
-.sec-hdr .sec-sub{opacity:0;transform:translateY(12px);transition:opacity .65s ease .28s,transform .65s ease .28s}
-.sec-hdr.reveal.in .sec-sub{opacity:1;transform:translateY(0)}
 
 /* ── DESIGN GALLERY ──────────────────────── */
 #gallery{background:var(--surface)}
@@ -649,10 +647,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
           <span class="chip">UI/UX Design</span><span class="chip">Graphic Design</span>
           <span class="chip">Branding</span><span class="chip">Canva</span>
           <span class="chip">Figma</span><span class="chip">Digital Creativity</span>
-        </div>
-        <div class="gh-stats reveal d4">
-          <img src="https://github-readme-stats.vercel.app/api?username=rakshana1105&show_icons=true&hide_border=true&bg_color=00000000&title_color=8B7CF8&icon_color=34D4B7&text_color=8B92B2" alt="GitHub stats" loading="lazy">
-          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rakshana1105&layout=compact&hide_border=true&bg_color=00000000&title_color=8B7CF8&text_color=8B92B2" alt="Top languages" loading="lazy">
         </div>
       </div>
     </div>
@@ -964,15 +958,15 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
   const prog    = document.getElementById('ld-prog');
   const fill    = document.getElementById('ld-fill');
 
-  /* 0.9s — smoothly expand "akshana " between R and D */
+  /* 0.9s — smoothly expand "akshana D" — non-breaking space keeps the gap before D */
   setTimeout(() => {
-    midEl.textContent = 'akshana ';
-    midEl.style.cssText = 'display:inline-block;white-space:nowrap;overflow:hidden;max-width:0;vertical-align:bottom;transition:max-width 0.9s cubic-bezier(0.34,1.04,0.64,1)';
+    midEl.textContent = 'akshana\u00A0'; /* \u00A0 = non-breaking space, won't collapse */
+    midEl.style.cssText = 'display:inline-block;white-space:nowrap;overflow:hidden;max-width:0;vertical-align:bottom;transition:max-width 1.6s cubic-bezier(0.34,1.04,0.64,1)';
     requestAnimationFrame(() => requestAnimationFrame(() => {
       midEl.style.maxWidth = '700px'; /* animate to full width smoothly */
     }));
 
-    /* After expansion completes (900ms) — show divider + tagline */
+    /* After expansion completes (1.65s) — show divider + tagline */
     setTimeout(() => {
       divEl.classList.add('on');
       tagEl.classList.add('on');
@@ -998,7 +992,7 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
           fill.style.width = '100%';
         }));
       }, 350);
-    }, 920);
+    }, 1680); /* wait for 1.6s expansion to fully settle */
   }, 900);
 })();
 
@@ -1525,6 +1519,35 @@ document.querySelectorAll('.cc').forEach(card => {
     setTimeout(() => { card.style.transition = ''; }, 560);
   });
 });
+
+/* ── 8. FOCUS BLUR SPOTLIGHT EFFECT ─────── */
+/* Hovering one card dims and blurs all siblings in the same grid */
+(function(){
+  const GRIDS = [
+    { sel: '.proj-grid',    cards: '.pc'      },
+    { sel: '.sk-grid',      cards: '.sk-card' },
+    { sel: '.cert-grid',    cards: '.cc'      },
+    { sel: '.process-grid', cards: '.pstep'   },
+    { sel: '.gallery-grid', cards: '.ig-box'  },
+  ];
+
+  GRIDS.forEach(({ sel, cards }) => {
+    const grid = document.querySelector(sel);
+    if (!grid) return;
+    const items = [...grid.querySelectorAll(cards)];
+
+    items.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        items.forEach(other => {
+          if (other !== item) other.classList.add('blur-out');
+        });
+      });
+      item.addEventListener('mouseleave', () => {
+        items.forEach(other => other.classList.remove('blur-out'));
+      });
+    });
+  });
+})();
 </script>
 
 </body>

@@ -730,7 +730,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
           <div class="pc-desc">Designed a modern watch brand portfolio focusing on user-centered design, interactive navigation, and high-fidelity mockups — applying UI/UX best practices throughout.</div>
           <div class="pc-tags"><span class="ptag">Figma</span><span class="ptag">UI Design</span><span class="ptag">UX Design</span><span class="ptag">Prototyping</span></div>
           <div class="pc-btns">
-            <button class="pb" data-action="preview">👁 Preview</button>
+            <button class="pb" onclick="event.stopPropagation();this.closest('.pc').click()">📖 Full Details</button>
           </div>
           <span class="expand-hint">click to expand ↗</span>
         </div>
@@ -742,7 +742,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
           <div class="pc-title">Advertisement Banner</div>
           <div class="pc-desc">Created an eye-catching promotional banner for a home baking business — incorporating branding elements, color theory, and visual hierarchy to improve customer engagement.</div>
           <div class="pc-tags"><span class="ptag">Canva</span><span class="ptag">Branding</span><span class="ptag">Color Theory</span><span class="ptag">Visual Hierarchy</span></div>
-          <div class="pc-btns"><button class="pb" data-action="preview">👁 Preview</button></div>
+          <div class="pc-btns"><button class="pb" onclick="event.stopPropagation();this.closest('.pc').click()">📖 Full Details</button></div>
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
@@ -753,7 +753,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;back
           <div class="pc-title">Ticket Booking Website</div>
           <div class="pc-desc">Designed and developed a responsive tourist ticket booking website focused on intuitive navigation, user-friendly layouts, and responsive design principles.</div>
           <div class="pc-tags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">Responsive Design</span><span class="ptag">UX</span></div>
-          <div class="pc-btns"><button class="pb" data-action="preview">👁 Preview</button></div>
+          <div class="pc-btns"><button class="pb" onclick="event.stopPropagation();this.closest('.pc').click()">📖 Full Details</button></div>
           <span class="expand-hint">click to expand ↗</span>
         </div>
       </article>
@@ -1174,13 +1174,6 @@ document.querySelectorAll('.pc').forEach(card => {
   card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
-/* ── RESUME GUARD ────────────────────────── */
-/* TODO: set href="resume.pdf" on the button then remove onclick */
-function handleResume(e) {
-  const el = e.currentTarget || e.target;
-  if (!el.getAttribute('href') || el.getAttribute('href') === '#') { e.preventDefault(); toast('📄', 'Add your PDF: set href="resume.pdf" on the button'); }
-}
-
 /* ── SKILL PILLS ─────────────────────────── */
 document.querySelectorAll('.pill').forEach(p => {
   p.addEventListener('click', () => { const w=p.classList.contains('on'); document.querySelectorAll('.pill').forEach(x=>x.classList.remove('on')); if(!w) p.classList.add('on'); });
@@ -1191,9 +1184,9 @@ document.querySelectorAll('.pill').forEach(p => {
    Add objects here and matching HTML cards above.
 ──────────────────────────────────────────── */
 const PROJECTS = [
-  { title:'Watch Brand Portfolio', type:'UI/UX Design', cls:'b-ux', emoji:'⌚', bg:'linear-gradient(135deg,#170d3c,#2d1b6e,#1a0a3c)', short:'A modern watch brand portfolio designed with a focus on user-centered design, interactive navigation, and high-fidelity mockups.', long:'Designed using Figma, this project focused on creating user-friendly layouts with consistent visual language across all screens. I applied UI/UX best practices to improve usability and visual consistency — including interactive navigation flows, clean typography, and a cohesive high-fidelity prototype that communicates the brand identity clearly.', tags:['Figma','UI Design','UX Design','Prototyping','Hi-Fi Mockups','User-Centered Design'], links:[{label:'👁 Preview',url:'#',p:true}] },
-  { title:'Advertisement Banner', type:'Graphic Design', cls:'b-open', emoji:'🎨', bg:'linear-gradient(135deg,#1a0a2a,#3d1f6e,#0d1a3a)', short:'An eye-catching promotional banner designed for a home baking business using Canva — incorporating branding, color theory, and visual hierarchy.', long:'This project involved designing a marketing-focused promotional banner for a home baking business. I incorporated key branding elements to reflect the business identity, applied color theory to make the design visually appealing, and used visual hierarchy principles to guide the viewer\'s attention. The result is a professional banner that improves customer engagement and communicates the brand\'s warmth and quality.', tags:['Canva','Graphic Design','Branding','Color Theory','Visual Hierarchy','Marketing Design'], links:[{label:'👁 Preview',url:'#',p:true}] },
-  { title:'Ticket Booking Website', type:'Front-End Dev', cls:'b-dev', emoji:'🎫', bg:'linear-gradient(135deg,#0a1a2e,#0d3055,#0a2040)', short:'A responsive tourist ticket booking website built with HTML and CSS — focused on intuitive navigation and user-friendly layouts.', long:'Designed and developed a fully responsive ticket booking website for tourists. The project focused on applying responsive design principles to ensure a seamless experience across devices. Key decisions included a clear booking flow, accessible layout structure, and clean visual design that guides the user from browsing to completing a booking without friction.', tags:['HTML','CSS','Responsive Design','UX Design','User-Friendly Layouts'], links:[{label:'👁 Preview',url:'#',p:true}] }
+  { title:'Watch Brand Portfolio', type:'UI/UX Design', cls:'b-ux', emoji:'⌚', bg:'linear-gradient(135deg,#170d3c,#2d1b6e,#1a0a3c)', short:'A modern watch brand portfolio designed with a focus on user-centered design, interactive navigation, and high-fidelity mockups.', long:'Designed using Figma, this project focused on creating user-friendly layouts with consistent visual language across all screens. I applied UI/UX best practices to improve usability and visual consistency — including interactive navigation flows, clean typography, and a cohesive high-fidelity prototype that communicates the brand identity clearly.', tags:['Figma','UI Design','UX Design','Prototyping','Hi-Fi Mockups','User-Centered Design'], links:[] },
+  { title:'Advertisement Banner', type:'Graphic Design', cls:'b-open', emoji:'🎨', bg:'linear-gradient(135deg,#1a0a2a,#3d1f6e,#0d1a3a)', short:'An eye-catching promotional banner designed for a home baking business using Canva — incorporating branding, color theory, and visual hierarchy.', long:'This project involved designing a marketing-focused promotional banner for a home baking business. I incorporated key branding elements to reflect the business identity, applied color theory to make the design visually appealing, and used visual hierarchy principles to guide the viewer\'s attention. The result is a professional banner that improves customer engagement and communicates the brand\'s warmth and quality.', tags:['Canva','Graphic Design','Branding','Color Theory','Visual Hierarchy','Marketing Design'], links:[] },
+  { title:'Ticket Booking Website', type:'Front-End Dev', cls:'b-dev', emoji:'🎫', bg:'linear-gradient(135deg,#0a1a2e,#0d3055,#0a2040)', short:'A responsive tourist ticket booking website built with HTML and CSS — focused on intuitive navigation and user-friendly layouts.', long:'Designed and developed a fully responsive ticket booking website for tourists. The project focused on applying responsive design principles to ensure a seamless experience across devices. Key decisions included a clear booking flow, accessible layout structure, and clean visual design that guides the user from browsing to completing a booking without friction.', tags:['HTML','CSS','Responsive Design','UX Design','User-Friendly Layouts'], links:[] }
 ];
 
 /* ── MODAL ───────────────────────────────── */
@@ -1278,12 +1271,13 @@ document.getElementById('cf-form').addEventListener('submit', async e => {
   btn.textContent = 'Sending…'; btn.disabled = true;
   const action = e.target.action;
   if (action.includes('YOUR_FORM_ID')) {
-    /* Formspree ID not set yet — simulate */
-    setTimeout(() => {
-      btn.textContent = '✅ Sent!'; e.target.reset();
-      toast('✅', `Thanks ${name}! Set up Formspree to receive real emails.`);
-      setTimeout(() => { btn.textContent = 'Send Message ✉️'; btn.disabled = false; }, 3000);
-    }, 1000);
+    /* Formspree not yet configured — open email client as reliable fallback */
+    const subject = encodeURIComponent(document.getElementById('cf-sub').value || 'Message from Portfolio');
+    const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
+    window.location.href = `mailto:rakshanadesiakumar@gmail.com?subject=${subject}&body=${body}`;
+    btn.textContent = '✉️ Opening email app...';
+    toast('✅', 'Opening your email app — message pre-filled!');
+    setTimeout(() => { btn.textContent = 'Send Message ✉️'; btn.disabled = false; }, 2500);
     return;
   }
   try {
